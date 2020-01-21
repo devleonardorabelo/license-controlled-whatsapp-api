@@ -1,0 +1,10 @@
+{
+  "name": "api-whatsapp",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.8.9"
+  }
+}
