@@ -1,22 +1,29 @@
-const generateKey = require('../utils/generateKey')
-const User        = require('../models/User')
+const bcrypt = require('bcryptjs')
+const generateDate = require('../utils/generateDate')
+const User         = require('../models/User')
 
 module.exports = {
     async store(req, res) {
-        let key = generateKey()
-        console.log(key)
+        let since = generateDate()
 
         let { username, password, whatsapp } = req.body
 
-        let user = await User.findOne({username})
+        let passwordHash = await bcrypt.hash(password, 10)
+        
+        let user = await User.findOne({whatsapp})
 
-        /*if(!user){
-            user = User.create({
+        if(!user){
+            user = {
                 username,
                 password: passwordHash,
-                whatsapp
-            })
-        }*/
+                whatsapp,
+                since,
+                key: 'test'
+            }
+            await User.create(user)
+
+            return res.json({user})
+        }
         return res.json({message: 'esse usuario ja existe'})
     }
 }

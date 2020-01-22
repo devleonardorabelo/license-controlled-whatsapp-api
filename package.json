@@ -4,7 +4,10 @@
   "main": "src/app.js",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "mongoose": "^5.8.9"
-  }
+  },
+  "repository": "https://github.com/devleonardorabelo/whatsapp-api.git",
+  "author": "deleonardorabelo <leonardomrabelo@gmail.com>"
 }
