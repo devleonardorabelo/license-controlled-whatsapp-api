@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 
 const MessageSchema = new mongoose.Schema({
-    userId  : String,
-    message : String
+    customerId : String,
+    message    : String,
+    userId     : String,
 })
 module.exports = mongoose.model('Message', MessageSchema)

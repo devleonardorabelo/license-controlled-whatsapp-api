@@ -9,32 +9,35 @@ module.exports = {
 
         let key = req.query.key
 
-        let user = await User.findOne({key, active: true})
+        let user = await User.findOne({whatsappKey: key, active: true})
 
         if(!user)
             return res.status(400).json({message: 'usuario não registrado ou não ativo'})
         
         const { name, email, whatsapp, message } = req.body
 
-        let findCustomer = await Customer.findOne({whatsapp})
-        console.log(findCustomer.id)
+        let customer = await Customer.findOne({whatsapp})
 
-        if(findCustomer){
-            let currentCustomer = findCustomer.id
+        if(customer){
+            currentCustomer = customer.id
         }else{            
-            let customer = await Customer.create({
+            let customer = {
                 name,
                 whatsapp,
-                email
-            })
-            let currentCustomer = customer.id
+                email,
+                userId: user.id
+            }
+            let newCustomer = await Customer.create(customer)
+            currentCustomer = newCustomer.id
         }
-        /*await Message.create({
-            userId: currentCustomer,
-            message
-        })*/
 
-        res.json({message: 'mensagem salva'})
+        await Message.create({
+            customerId: currentCustomer,
+            message,
+            userId: user.id,
+        })
+
+        return res.json({message: 'mensagem salva'})
 
 
     }

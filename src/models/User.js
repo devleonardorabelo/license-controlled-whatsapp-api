@@ -5,9 +5,11 @@ const UserSchema = new mongoose.Schema({
     username    : String,
     password    : String,
     whatsapp    : String,
+    email       : String,
     since       : String,
     whatsappKey : String,
-    active      : Boolean
+    active      : Boolean,
+    recoverKey  : String,
 })
 
 

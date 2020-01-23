@@ -5,8 +5,14 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "mongoose": "^5.8.9"
+    "express-session": "^1.17.0",
+    "mongoose": "^5.8.9",
+    "nodemailer": "^6.4.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   },
   "repository": "https://github.com/devleonardorabelo/whatsapp-api.git",
   "author": "deleonardorabelo <leonardomrabelo@gmail.com>"
