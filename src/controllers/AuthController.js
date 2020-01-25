@@ -54,7 +54,6 @@ module.exports = {
             return res.json({erro: "senhas não coincidem"})
         }
         return res.json({status: "senha alterada"})
-        
-        
+         
     } 
 }
