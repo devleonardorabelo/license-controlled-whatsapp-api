@@ -1,8 +1,15 @@
 const mongoose = require('mongoose')
 
 const MessageSchema = new mongoose.Schema({
-    customerId : String,
+    customer   : {
+    	type: String,
+    	ref : 'Customer'
+    },
     message    : String,
-    userId     : String,
+    user       : {
+    	type: String,
+    	ref : 'User'
+    },
+    url        : String
 })
 module.exports = mongoose.model('Message', MessageSchema)

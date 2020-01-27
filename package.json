@@ -12,7 +12,8 @@
     "mongoose": "^5.8.9",
     "nodemailer": "^6.4.2",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "stripe": "^8.7.0"
   },
   "repository": "https://github.com/devleonardorabelo/whatsapp-api.git",
   "author": "deleonardorabelo <leonardomrabelo@gmail.com>"

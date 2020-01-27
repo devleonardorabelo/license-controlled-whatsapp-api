@@ -20,6 +20,7 @@ module.exports = {
 
         if(customer){
             currentCustomer = customer.id
+            console.log(currentCustomer)
         }else{            
             let customer = {
                 name,
@@ -32,9 +33,10 @@ module.exports = {
         }
 
         await Message.create({
-            customerId: currentCustomer,
+            customer: currentCustomer,
             message,
             userId: user.id,
+            url: req.get('referer')
         })
 
         return res.json({message: 'mensagem salva'})

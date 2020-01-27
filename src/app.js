@@ -26,7 +26,15 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }))
-
+app.use(
+  express.json({
+    verify: function(req, res, buf) {
+      if (req.originalUrl.startsWith("/webhook")) {
+        req.rawBody = buf.toString();
+      }
+    }
+  })
+)
 
 app.use(passport.initialize())
 app.use(passport.session())
@@ -35,11 +43,12 @@ app.use(passport.session())
 const auth      = require('./routes/auth')
 const panel     = require('./routes/panel')
 const redirects = require('./routes/redirects')
-
+const payment   = require('./routes/payment')
 
 app.use('/auth', auth)
 app.use('/panel', panel)
 app.use('/', redirects)
+app.use('/payment', payment)
 
 app.listen(port, () =>  {
     console.log(`connected in port: ${port}`)

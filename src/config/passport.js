@@ -41,7 +41,6 @@ passport.use('local-signup', new LocalStrategy({
             whatsapp,
             email,
             since: generateDate(),
-            whatsappKey: generateKey(), //MUDAR PARA NADA DEPOIS DOS TESTES
             recoverKey: await bcrypt.hash(generateKey(), 10),
             active: true
         }

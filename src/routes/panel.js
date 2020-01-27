@@ -1,10 +1,13 @@
-const { Router } = require('express')
-const routes     = Router()
+const { Router }      = require('express')
+const routes          = Router()
+const PanelController = require('../controllers/PanelController.js')
 
-//FAZER VERIFICAÇÃO DE AUTENTICIDADE
+async function authCheck(req, res, next) {
+	if (req.isAuthenticated())
+		return next()
+	else
+		return res.redirect('/auth/signin')
+}
 
-routes.get('/', (req, res) => {
-    res.json({user: req.user})
-})
-
+routes.get('/', authCheck, PanelController.show)
 module.exports = routes
