@@ -1,6 +1,8 @@
-const { Router }      = require('express')
-const routes          = Router()
-const PanelController = require('../controllers/PanelController.js')
+const { Router }        = require('express')
+const routes            = Router()
+
+const PanelController   = require('../controllers/PanelController')
+const ContactController = require('../controllers/ContactController')
 
 async function authCheck(req, res, next) {
 	if (req.isAuthenticated())
@@ -10,4 +12,7 @@ async function authCheck(req, res, next) {
 }
 
 routes.get('/', authCheck, PanelController.show)
+
+routes.get('/contacts' , ContactController.show)
+
 module.exports = routes

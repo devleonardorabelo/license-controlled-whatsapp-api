@@ -1,8 +1,23 @@
-const { Router } = require('express')
-const routes = Router()
+const { Router }     = require('express')
+const passport       = require('passport')
+const LocalStrategy  = require('passport-local').Strategy
+const routes         = Router()
+
 const AuthController = require('../controllers/AuthController')
-const passport = require('passport')
-require('../config/passport')
+const User           = require('../models/User')
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
+
+passport.use('local-signin', new LocalStrategy(AuthController.signin))
+
+passport.use('local-signup', new LocalStrategy({passReqToCallback : true},AuthController.signup))  
 
 routes.get('/signin', (req, res) =>	res.render('auth/signin'))
 
@@ -23,7 +38,11 @@ routes.get('/logout', (req, res) => {
 	return res.redirect('/auth/signin')
 })
 
+routes.get('/recover', (req, res) => res.render('auth/recover'))
+
 routes.post('/recover', AuthController.recover)
+
+routes.get('/recover/new', (req, res) => res.render('auth/newrecover'))
 
 routes.post('/recover/new', AuthController.update)
 
