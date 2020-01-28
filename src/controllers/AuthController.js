@@ -14,8 +14,8 @@ module.exports = {
             port: 587,
             secure: false,
             auth: {
-                user: 'leonardo@wule.com.br',
-                pass: 'Leo#91427507'
+                user: '', //EDIT
+                pass: '' //EDIT
             }
         })
         var mailOptions = {
