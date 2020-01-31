@@ -8,15 +8,10 @@ const session      = require('express-session')
 const passport     = require('passport')
 const exphbs       = require('express-handlebars')
 const path         = require('path')
-const cors         = require('cors')
 
-app.use(cors()) // ALTERAR PARA URL ESPECIFICA
-
-mongoose.connect('mongodb://wule02:91427507@mongodb.wule.com.br/wule02',{
+mongoose.connect('mongodb://localhost:27017/apiwhatsapp',{
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => {
-  console.log('conectado ao bd')
 })
 
 app.engine('handlebars', exphbs());
