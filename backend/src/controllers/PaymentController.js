@@ -11,8 +11,8 @@ module.exports = {
         console.log(session)
     },
     async create(req, res) {
-        const planId = config.paymentConfigs.productID
-        const domainURL = config.paymentConfigs.domainURL
+        const planId = config.paymentConfigs.productId
+        const domainUrl = config.paymentConfigs.domainURL
         let session
 
         session = await stripe.checkout.sessions.create({
