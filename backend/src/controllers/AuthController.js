@@ -1,28 +1,34 @@
-const passport      = require('passport')
 const bcrypt        = require('bcryptjs')
 const nodemailer    = require('nodemailer')
 
 const User          = require('../models/User')
 const generateKey   = require('../utils/generateKey')
 const generateDate  = require('../utils/generateDate')
+const generateToken = require('./utils/generateToken')
 const config        = require('../config/configs')
 
 module.exports = {
-    async signin(username, password, done) {
+    async signin(req, res) {
+        
+        let { username, password } = req.body
         let user = await User.findOne({username})
         if(!user)
-            return done(null, false)
-        let compared = await bcrypt.compare(password, user.password)
-        if(compared)
-            return done(null, user)
-        else
-            return done(null, false)
+            return res.json({erro: 'user not found'})
+        if(!await bcrypt.compare(password, user.password))
+            return res.json({erro: 'incorrect password'})
+
+        res.send({
+            user,
+            token: generateToken({ id: user.id })
+        })
+        
     },
-    async signup(req, username, password, done) {
-        let { email, whatsapp } = req.body
+    async signup(req, res) {
+        let { username, email, whatsapp, password } = req.body
         let user = await User.findOne({username})
         if(user)
-            return done(null, false)
+            return res.json({erro: 'user exist'})
+
         let passwordHash = await bcrypt.hash(password, 10)
         user = {
             username,
@@ -33,8 +39,10 @@ module.exports = {
             recoverKey: await bcrypt.hash(generateKey(), 10),
             active: true
         }
+
         let newUser = await User.create(user)
-        return done(null, newUser)
+        
+
     },
     async recover(req, res) {
         let { email } = req.body

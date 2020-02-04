@@ -5,7 +5,6 @@ const app          = express()
 const cookieParser = require('cookie-parser')
 const bodyParser   = require('body-parser')
 const session      = require('express-session')
-const passport     = require('passport')
 const exphbs       = require('express-handlebars')
 const path         = require('path')
 const cors         = require('cors')
@@ -40,10 +39,6 @@ app.use(
     }
   })
 )
-
-app.use(passport.initialize())
-app.use(passport.session())
-
 
 const auth      = require('./routes/auth')
 const panel     = require('./routes/panel')
