@@ -1,18 +1,14 @@
 const { Router }        = require('express')
 const routes            = Router()
-
-const PanelController   = require('../controllers/PanelController')
+const authMiddleware    = require('../middlewares/auth')
 const ContactController = require('../controllers/ContactController')
 
-async function authCheck(req, res, next) {
-	if (req.isAuthenticated())
-		return next()
-	else
-		return res.redirect('/auth/signin')
-}
+routes.use(authMiddleware)
 
-routes.get('/', authCheck, PanelController.show)
+routes.get('/', (req, res) => {
+    res.send({user: req.userId})
+})
 
-routes.get('/contacts' , ContactController.show)
+routes.get('/contacts')
 
 module.exports = routes

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import api from '../services/api'
-
+import axios from 'axios'
 
 function Auth() {
 	
@@ -10,41 +9,27 @@ function Auth() {
 
 	let history = useHistory()
 
-	async function formTest(e) {e.preventDefault() } 
-	async function handleSignin(){
+	async function handleSignin(e){
+		e.preventDefault()
 		
-		const data = { username, password }
-		console.log(data)
-
-		const requestInfo = {
-			method: 'POST',
-			body: JSON.stringify(data),
-			headers: new Headers({
-				'Content-type': 'application/json'
-			}),
-		}
-		
-		fetch('http://localhost:21068/auth/signin', requestInfo)
-		.then(response => {
-			if(response.ok) {
-				return response.json()
-			}
-			throw new Error('Login invalido...');
-		})
-		.then(token => {
-			localStorage.setItem('token', token);
-			console.log(token)
-			history.push('/panel')
-		})
+		await axios.post('http://localhost:21068/auth/signin', {
+			username,
+			password
+		}).then(response => {
+			localStorage.setItem('usertoken', response.data)
+			return history.push('/panel')
+		}).catch(err => {
+			console.log(err)
+		})  
 
 	}
 
 	return (<>
 		<h1>Auth</h1>
-		<form onSubmit={formTest}>
+		<form onSubmit={handleSignin}>
 			<input type="text" name="username" onChange={e => setUsername(e.target.value)} />
 			<input type="text" name="password" onChange={e => setPassword(e.target.value)} />
-			<button type="submit" onClick={handleSignin}>Enviar</button>
+			<button type="submit" >Enviar</button>
 		</form>
 	</>)
 }

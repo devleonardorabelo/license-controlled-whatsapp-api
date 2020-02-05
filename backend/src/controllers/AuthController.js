@@ -1,10 +1,11 @@
 const bcrypt        = require('bcryptjs')
 const nodemailer    = require('nodemailer')
+const jwt           = require('jsonwebtoken')
 
 const User          = require('../models/User')
 const generateKey   = require('../utils/generateKey')
 const generateDate  = require('../utils/generateDate')
-const generateToken = require('./utils/generateToken')
+
 const config        = require('../config/configs')
 
 module.exports = {
@@ -17,13 +18,20 @@ module.exports = {
         if(!await bcrypt.compare(password, user.password))
             return res.json({erro: 'incorrect password'})
 
-        res.send({
-            user,
-            token: generateToken({ id: user.id })
+        const payload = {
+            id: user.id,
+            username: user.username,
+            whatsapp: user.whatsapp
+        }
+
+        let token = jwt.sign(payload, config.secret, {
+            expiresIn: 86400,
         })
+
+        res.send(token)
         
     },
-    async signup(req, res) {
+    async signup(req, res) { //FAZER JWT
         let { username, email, whatsapp, password } = req.body
         let user = await User.findOne({username})
         if(user)
