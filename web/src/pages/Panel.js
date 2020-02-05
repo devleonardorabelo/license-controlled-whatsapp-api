@@ -7,11 +7,8 @@ function Panel() {
   
   useEffect(() => {
 
-    const token = localStorage.getItem('usertoken')
-    const userToken = `Bearer ${token}`
-
     async function getPanel() {
-      const response = await axios.get('http://localhost:21068/panel', { headers: { Authorization: userToken } })
+      const response = await axios.get('http://localhost:21068/panel', { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
 
       setUser(response.data.user.username)
     

@@ -4,7 +4,8 @@ import React, { Suspense, lazy } from 'react';
 import { isAuthenticated } from './auth'
 
 const Home = lazy(() => import('./pages/Home'));
-const Auth = lazy(() => import('./pages/Auth'));
+const Signin = lazy(() => import('./pages/Signin'));
+const Signup = lazy(() => import('./pages/Signup'));
 const Panel = lazy(() => import('./pages/Panel'));
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -12,7 +13,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     isAuthenticated() ? (
       <Component { ... props} />
     ) : (
-     <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+     <Redirect to={{ pathname: '/signin', state: { from: props.location } }} />
   )
   )} />
 )
@@ -22,7 +23,8 @@ const Routes = () => (
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/auth" component={Auth}/>
+          <Route path="/signin" component={Signin}/>
+          <Route path="/signup" component={Signup}/>
           <PrivateRoute path="/panel" component={Panel}/>
         </Switch>
       </Suspense>

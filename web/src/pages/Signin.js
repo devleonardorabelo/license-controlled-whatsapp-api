@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
-function Auth() {
+function Signin() {
 	
 	const [username, setUsername]= useState('')
 	const [password, setPassword]= useState('')
@@ -12,15 +12,13 @@ function Auth() {
 	async function handleSignin(e){
 		e.preventDefault()
 		
-		await axios.post('http://localhost:21068/auth/signin', {
+		const response = await axios.post('http://localhost:21068/auth/signin', {
 			username,
 			password
-		}).then(response => {
-			localStorage.setItem('usertoken', response.data)
-			return history.push('/panel')
-		}).catch(err => {
-			console.log(err)
-		})  
+		})
+		
+		localStorage.setItem('usertoken', response.data)
+		return history.push('/panel')
 
 	}
 
@@ -34,4 +32,4 @@ function Auth() {
 	</>)
 }
 
-export default Auth
+export default Signin

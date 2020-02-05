@@ -25,13 +25,13 @@ module.exports = {
         }
 
         let token = jwt.sign(payload, config.secret, {
-            expiresIn: 86400,
+            expiresIn: 300,
         })
 
         res.send(token)
         
     },
-    async signup(req, res) { //FAZER JWT
+    async signup(req, res) {
         let { username, email, whatsapp, password } = req.body
         let user = await User.findOne({username})
         if(user)
@@ -50,6 +50,17 @@ module.exports = {
 
         let newUser = await User.create(user)
         
+        const payload = {
+            id: newUser.id,
+            username: newUser.username,
+            whatsapp: newUser.whatsapp
+        }
+
+        let token = jwt.sign(payload, config.secret, {
+            expiresIn: 300,
+        })
+
+        res.send(token)
 
     },
     async recover(req, res) {
