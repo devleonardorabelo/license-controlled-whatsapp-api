@@ -3,10 +3,11 @@ import React, { Suspense, lazy } from 'react';
 
 import { isAuthenticated } from './auth'
 
-const Home = lazy(() => import('./pages/Home'));
-const Signin = lazy(() => import('./pages/Signin'));
-const Signup = lazy(() => import('./pages/Signup'));
-const Panel = lazy(() => import('./pages/Panel'));
+const Home = lazy(() => import('./pages/Home/'));
+const Signin = lazy(() => import('./pages/Auth/Signin/'));
+const Signup = lazy(() => import('./pages/Auth/Signup/'));
+const Panel = lazy(() => import('./pages/Panel/'));
+
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route { ...rest } render={props => (
@@ -17,6 +18,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   )
   )} />
 )
+
 
 const Routes = () => (
     <Router>

@@ -1,0 +1,501 @@
+/* vietnamese */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afT3GLRrX.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afTzGLRrX.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afTLGLQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afT3GLRrX.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afTzGLRrX.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afTLGLQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afT3GLRrX.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afTzGLRrX.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afTLGLQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afT3GLRrX.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afTzGLRrX.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muli/v19/7Auwp_0qiz-afTLGLQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  font-size: 1.0em;
+  background: #FFF;
+  font-weight: 400;
+  background: #f4f9fe;
+  color: #333;
+}
+input {
+  padding: 15px 20px;
+  background: white;
+  border: 0px;
+  border-radius: 3px;
+  width: 100%;
+  color: black!important;
+  font-family: 'Muli',sans-serif;
+}
+button,.btn-primary {
+  padding: 15px 30px;
+  background: #25D366;
+  color: white;
+  border-radius: 25px;
+  display: inline-block;
+  transition: box-shadow 0.5s, background 0.5s;
+  border: 0px;
+  cursor: pointer;
+}
+button:hover,.btn-primary:hover {
+  background: #00BA85;
+  box-shadow: 0px 15px 20px -15px #68EDCB;
+}
+h1 {
+  font-size: 2.6em;
+  margin-bottom: 20px;
+  color: #2F4858;
+  font-weight: 900;
+  line-height: 40px;
+  letter-spacing: -2px;
+}
+h2 {
+  font-weight: 900;
+  color: #2F4858;
+}
+p {
+  font-size: 16px;
+  padding: 0px 0px;
+}
+p.subtitle {
+  font-size: 1.2em;
+  padding: 15px 0px;
+}
+.fluid-container {
+  width: 100%;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 30px;
+  margin: 0px auto;
+}
+
+/* NAVBAR */
+nav {
+  width: 100%;
+  text-align: right;
+  padding: 30px 25px;
+}
+nav .logo {
+  float: left;
+  margin-top: -15px;
+}
+nav li {
+  list-style: none;
+  display: inline-block;
+}
+nav li a {
+  padding: 20px 15px;
+  color: #00818F;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 15px;
+}
+nav .toggle-nav {
+  display: none;
+}
+
+.bg-comments {
+  background: linear-gradient(transparent, #f4f9fe 75%), url(/img/pattern.jpg);
+  padding: 0px 0px 80px 0px;
+}
+.bg-comments:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  margin-top: -20px;
+  z-index: 5;
+  background:linear-gradient(182deg,transparent 50%, rgb(0,175,195,0.05) 50.2%);
+}
+
+.complete {
+  background: rgb(0,175,195,0.05);
+  padding: 0px 30px 60px 100px;
+}
+.complete:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 100px;
+  margin-top: -20px;
+  z-index: 5;
+  background:linear-gradient(182deg,transparent 50%, #f4f9fe 50.2%);
+}
+.complete div.container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.complete div.container>div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.complete .btn-primary {
+  margin: 30px auto;
+}
+
+.painel {
+  width: 100%;
+  max-width: 700px;
+  padding-top: 150px;
+  padding-bottom: 50px;
+  margin: 0px auto 0px auto;
+  text-align: center;
+}
+.painel p {
+  margin: 0px 40px;
+  font-size: 1.2em;
+}
+.painel .btn-primary {
+  margin-top: 40px;
+}
+.btn-primary:hover,.btn-testar:hover {
+  background: #00BA85;
+  box-shadow: 0px 15px 20px -15px #68EDCB;
+}
+.btn-testar {
+  background: #25D366;
+  color: white;
+  border-radius: 30px;
+  transition: box-shadow 0.5s, background 0.5s;
+}
+span.info {
+  display: block;
+  font-size: 0.8em;
+  margin-top: 10px;
+  color: #666;
+}
+
+.functionalities {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  text-align: center;
+  padding-top: 60px;
+}
+.functionalities div {
+  padding: 20px;
+  border-radius: 10px;
+  transition: box-shadow 0.5s;
+}
+.functionalities div:hover {
+  box-shadow: 0 25px 57px 3px rgba(0,27,103,.15);
+}
+.functionalities div h2 {
+  margin: 0px 0px 10px 0px;
+}
+.functionalities div img {
+  max-height: 70px;
+  margin: 20px;
+}
+.functionalities p {
+  padding: 0px 15px;
+}
+
+.signature {
+  background-image: -webkit-linear-gradient(top right, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
+  background-image: -o-linear-gradient(top right, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
+  background-image: linear-gradient(to bottom left, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
+  color: white;
+  margin-top: 50px;
+  padding: 50px 0px;
+  text-align: center
+}
+.signature * {
+  color: white;
+}
+.signature h2 {
+  font-weight: 600;
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+.signature .container {
+  max-width: 1000px;
+}
+.form {
+  padding: 20px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-gap: 30px;
+  text-align: left;
+  max-width: 1000px;
+  margin: 0px auto;
+}
+
+.how-to {
+  padding: 50px 100px;
+  margin-top: 20px;
+}
+.how-to:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  margin-top: -10px;
+  z-index: 5;
+  background:linear-gradient(359deg,rgb(0,158,147,0.1) 49.7%,transparent 50.4%);
+}
+.how-to p {
+  margin-bottom: 20px;
+}
+.how-to>div {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 30px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.how-to img {
+  margin-bottom: 20px;
+}
+
+.help-us {
+  background: rgb(0,158,147,0.1);
+}
+.help-us .container {
+  padding: 40px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.help-us .container div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.help-us img {
+  height: 400px;
+  display: block;
+  margin: auto;
+  margin-top: -130px;
+  margin-bottom: -130px;
+  z-index: 999;
+  position: relative
+}
+
+.signature-container {
+  padding: 40px 40px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.signature-container h2 {
+  margin-top: 100px;
+  margin-bottom: 15px;
+  font-size: 32px;
+}
+.signature-container p {
+  margin-bottom: 5px;
+}
+.signature-container .btn-primary {
+  margin-top: 20px;
+}
+.signature-container:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  margin-top: -40px;
+  z-index: 5;
+  background:linear-gradient(179deg,rgb(0,158,147,0.1) 49.7%,transparent 50.4%);
+}
+
+footer a {
+  color: #00AFC3;
+  margin: 15px;
+  font-size: 13px;
+}
+footer .link-footer {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 0px;
+  padding: 60px 50px 0px 50px;
+}
+
+footer div {
+  text-align: center;
+}
+
+footer>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .wule-logo {
+  max-height: 40px;
+  margin: 0px 40px;
+}
+
+footer .copyright {
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 899px) {
+  *{
+    grid-template-columns: 1fr!important;
+  }
+  body img {
+    max-width: 100%;
+    display: inline-block;
+    margin: 0px auto;
+  }
+  nav ul {text-align: center;overflow:hidden;width: 100%;max-height: 0px;}
+  nav ul.active {animation:toggleMenu 1.3s forwards;}
+  nav li {display: block;padding:15px 0px;}
+  nav li a.btn-testar {display: inline-block;}
+  nav .toggle-nav {background: transparent;float: right;margin-top: -10px;margin-right: -10px;display: block;padding:5px;}
+  nav .toggle-nav img {max-height: 30px}
+  .painel {padding: 40px 15px;}
+  .complete {
+    padding: 0px 30px 60px 30px;
+  }
+  .complete img {
+    display: block;
+  }
+  .how-to {
+    padding: 50px 30px;
+  }
+  .help-us .container {
+    padding: 40px 30px;
+  }
+  footer .link-footer {
+    padding: 60px 30px;
+  }
+  footer .links-map {
+    columns: 2;
+    text-align: left;
+    padding: 30px 0px;
+  }
+  footer .links-map a {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .help-us img {
+    margin: 0px;
+    max-height: 250px;
+    margin: auto;
+  }
+}
+
+@keyframes toggleMenu {
+  0% {max-height: 0px}
+  100% {max-height: 100vh}
+}

@@ -25,7 +25,7 @@ module.exports = {
         }
 
         let token = jwt.sign(payload, config.secret, {
-            expiresIn: 300,
+            expiresIn: 500,
         })
 
         res.send(token)
@@ -57,7 +57,7 @@ module.exports = {
         }
 
         let token = jwt.sign(payload, config.secret, {
-            expiresIn: 300,
+            expiresIn: 500,
         })
 
         res.send(token)

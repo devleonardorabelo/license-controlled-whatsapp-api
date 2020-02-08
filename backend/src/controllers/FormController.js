@@ -3,16 +3,15 @@ const Message  = require('../models/Message')
 const Customer = require('../models/Customer')
 
 module.exports = {
+
     async store(req, res) {
-        if(!req.query.key)
-            return res.status(400).json({message: 'requisição invalida'})
+        if(!req.query.key) return res.status(400).json({message: 'requisição invalida'})
 
         let key = req.query.key
-
+  
         let user = await User.findOne({whatsappKey: key, active: true})
-
-        if(!user)
-            return res.status(400).json({message: 'usuario não registrado ou não ativo'})
+        
+        if(!user) return res.status(400).json({message: 'usuario não registrado ou não ativo'})
         
         const { name, email, whatsapp, message } = req.body
 
@@ -26,7 +25,7 @@ module.exports = {
                 name,
                 whatsapp,
                 email,
-                userId: user.id
+                user: user.id
             }
             let newCustomer = await Customer.create(customer)
             currentCustomer = newCustomer.id
@@ -35,7 +34,7 @@ module.exports = {
         await Message.create({
             customer: currentCustomer,
             message,
-            userId: user.id,
+            user: user.id,
             url: req.get('referer')
         })
 
