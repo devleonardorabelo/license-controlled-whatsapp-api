@@ -16,6 +16,7 @@ function Signin() {
 			username,
 			password
 		})
+		console.log(response)
 		
 		localStorage.setItem('usertoken', response.data)
 		return history.push('/panel')

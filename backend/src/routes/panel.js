@@ -6,8 +6,8 @@ const PanelController   = require('../controllers/PanelController')
 
 routes.use(authMiddleware)
 
-routes.get('/', (PanelController.show))
+routes.get('/', PanelController.show)
 
-routes.get('/contacts')
+routes.get('/contacts', ContactController.show)
 
 module.exports = routes

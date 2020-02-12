@@ -10,6 +10,11 @@ const MessageSchema = new mongoose.Schema({
     	type: String,
     	ref : 'User'
     },
-    url        : String
+    url        : String,
+    new        : {
+        type   : Boolean,
+        default: true
+    },
+    date       : String
 })
 module.exports = mongoose.model('Message', MessageSchema)

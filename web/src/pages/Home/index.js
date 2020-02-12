@@ -1,28 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import NavHome from '../../components/NavHome'
 import './style.css'
-import './script.js'
+
 
 function Home() {
+ 
 	return (<>
 	<div className="fluid-container bg-comments">
-		<nav>
-			<button className="toggle-nav"><img src="/img/open-menu.svg" alt="Abrir Menu" title="Abrir Menu" /></button>
-			<img src="/img/logo.png" alt="GerenciaZap" title="GerenciaZap" className="logo" />
-			<ul>
-				<li><a href="#functionalities">Funcionalidades</a></li>
-				<li><a href="#signature">Assinatura</a></li>
-				<li><a href="#how-to">Integração</a></li>
-				<li><a href="#support">Suporte</a></li>
-				<li><Link to="/signin">Login</Link></li>
-				<li><a href="" className="btn-testar">Ganhe R$15,90 para Testar</a></li>
-			</ul>
-		</nav>
+		<NavHome />
 		<div className="painel">
 			<h1>Não perca nenhuma mensagem!</h1>
 			<p>O <strong>GerenciaZap</strong> é uma ferramenta de captura de contatos completa! Não perca nenhuma mensagem enviada em seu Site, acesse sua lista de contatos e muito mais!</p>
-			<a href="#" className="btn-primary">GANHE R$15,90 PARA TESTAR</a>
+			<a href="" className="btn-primary">GANHE R$15,90 PARA TESTAR</a>
 		</div>
 	</div>
 		<section className="fluid-container complete" id="functionalities">
@@ -32,7 +22,7 @@ function Home() {
 						<h1>Obtenha uma ferramenta completa!</h1>
 						<p className="subtitle">Com o <strong>GerenciaZap</strong> você poderá acessar todas as mensagens, até mesmo as que não foram enviadas pelo WhatsApp Web, podendo responder a todas as solicitações de seus Clientes.</p>
 						<p>Além disso, utilize sua lista de Contatos para realizar suas Campanhas de E-mail Marketing com o público alvo certo!</p>
-						<a href="#" className="btn-primary center">GANHE R$15,90 PARA TESTAR</a>
+						<a href="" className="btn-primary center">GANHE R$15,90 PARA TESTAR</a>
 					</div>
 				</div>
 				<div>
@@ -61,7 +51,7 @@ function Home() {
 			<div className="container">
 				<h2>Assine por apenas R$15,90 mensais</h2>
 				<p>E só pague à partir do Segundo Mês de uso! Assim você garante uma lista completa de Contatos e não perca mais nenhuma Mensagem!</p>
-				<form action="#" method="post" className="form">
+				<form action="" method="post" className="form">
 					<div><input type="text" placeholder="Seu Nome" name="name" required /></div>
 					<div><input type="email" placeholder="Seu melhor E-mail" name="email" required /></div>
 					<div><input type="tel" placeholder="Seu WhatsApp" name="tel" required /></div>
@@ -110,7 +100,7 @@ function Home() {
 			<h2>Assine por apenas R$15,90 mensais</h2>
 			<p>Comece a receber mensagens de seus clientes agora mesmo!</p>
 			<p>Cadastre-se e ganhe R$15,90 para utilizar no período de um mês!</p>
-			<a href="#" className="btn-primary center">GANHE R$15,90 PARA TESTAR</a>
+			<a href="" className="btn-primary center">GANHE R$15,90 PARA TESTAR</a>
 		</section>
 		<footer className="fluid-container">
 			<div className="container link-footer">
