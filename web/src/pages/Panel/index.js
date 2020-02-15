@@ -8,15 +8,15 @@ import Message from '../../components/Message'
 function Panel() {
 
   const [messages, setMessages] = useState([])
-  const [status, setStatus] = useState([])
-
+  const [status, setStatus] = useState([])  
   useEffect(() => {
 
     async function loadMessages(){
 
-      const response = await axios.get('http://192.168.25.139:21068/panel', { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+      const response = await axios.get('http://localhost:21068/panel', { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
       setMessages(response.data.message)
       setStatus(response.data.status)
+
     }
     
     loadMessages() 
