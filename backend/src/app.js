@@ -11,7 +11,7 @@ const cors         = require('cors')
 
 app.use(cors()) // ALTERAR PARA URL ESPECIFICA
 
-mongoose.connect('mongodb://localhost:27017/apiwhatsapp',{//'mongodb://wule02:91427507@mongodb.wule.com.br/wule02'
+mongoose.connect('mongodb://localhost:27017/apiwhatsapp',{//mongodb://localhost:27017/apiwhatsappmongodb://wule02:91427507@mongodb.wule.com.br/wule02
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => {

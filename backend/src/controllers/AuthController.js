@@ -10,13 +10,13 @@ const config        = require('../config/configs')
 
 module.exports = {
     async signin(req, res) {
-        
+        console.log(req.body)
         let { username, password } = req.body
         let user = await User.findOne({username})
         if(!user)
-            return res.json({erro: 'user not found'})
+            return res.send({error: 'user not found'})
         if(!await bcrypt.compare(password, user.password))
-            return res.json({erro: 'incorrect password'})
+            return res.send({error: 'incorrect password'})
 
         const payload = {
             id: user.id,
@@ -25,7 +25,7 @@ module.exports = {
         }
 
         let token = jwt.sign(payload, config.secret, {
-            expiresIn: 50000,
+            expiresIn: 500,
         })
 
         res.send(token)

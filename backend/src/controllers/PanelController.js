@@ -3,7 +3,7 @@ const Message = require ('../models/Message')
 
 module.exports = {
     async show(req, res) {
- 
+
         let message = await Message.find({user: currentUser.id}).populate('customer')
         let status  = {
             news: 0,
@@ -12,13 +12,14 @@ module.exports = {
             month: 0
         }   
 
+
         now = new Date
         
         currentMonth = now.getMonth()+1
         currentDay   = now.getDate()
 
-
         for (const eachMsg of message) {
+            console.log(eachMsg.date)
             let eachDate      = eachMsg.date.split('/') // [0]dayOfWeek, [1]day, [2]month, [3]year
             let initialDay    = (eachDate[1] - eachDate[0]).toString()
 

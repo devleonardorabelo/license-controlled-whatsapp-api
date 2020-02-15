@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import ReactDOM, { render } from 'react-dom';
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
@@ -9,18 +10,19 @@ function Signin() {
 
 	let history = useHistory()
 
+
 	async function handleSignin(e){
 		e.preventDefault()
 		
-		const response = await axios.post('http://localhost:21068/auth/signin', {
+		const response = await axios.post('http://192.168.25.139:21068/auth/signin', {
 			username,
 			password
 		})
-		console.log(response)
 		
 		localStorage.setItem('usertoken', response.data)
+		
 		return history.push('/panel')
-
+		
 	}
 
 	return (<>
