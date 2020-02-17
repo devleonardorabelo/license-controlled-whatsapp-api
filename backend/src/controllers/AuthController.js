@@ -10,14 +10,17 @@ const config        = require('../config/configs')
 
 module.exports = {
     async signin(req, res) {
-        console.log(req.body)
+        
         let { username, password } = req.body
         let user = await User.findOne({username})
-        if(!user)
-            return res.send({error: 'user not found'})
-        if(!await bcrypt.compare(password, user.password))
-            return res.send({error: 'incorrect password'})
-
+        if(!user){
+            let error = 'user not found'
+            return res.send({error})
+        }
+        if(!await bcrypt.compare(password, user.password)){
+            let error = 'incorrect password'
+            return res.send({error})
+        }
         const payload = {
             id: user.id,
             username: user.username,
@@ -33,9 +36,18 @@ module.exports = {
     },
     async signup(req, res) {
         let { username, email, whatsapp, password } = req.body
+        
         let user = await User.findOne({username})
-        if(user)
-            return res.json({erro: 'user exist'})
+
+        const error = []
+
+        if(user) error.push('Este usuário já existe')
+        if(!username || username.length < 5) error.push('Usuário inválido')
+        if(!email || email.length < 15) error.push('Email inválido')
+        if(!whatsapp || whatsapp.length < 13) error.push('Whatsapp inválido, ex: 5561998877665')
+        if(!password || password.length < 8) error.push('Senha muito curta')
+
+        if(error.length > 0) return res.send({error})
 
         let passwordHash = await bcrypt.hash(password, 10)
         user = {

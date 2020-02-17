@@ -8,6 +8,7 @@ function Signup() {
     const [whatsapp, setWhatsapp]= useState('')
     const [email, setEmail]= useState('')
 	const [password, setPassword]= useState('')
+	const [errors, setErrors]= useState([])
 
 	let history = useHistory()
 
@@ -20,6 +21,8 @@ function Signup() {
             whatsapp,
             email
 		})
+
+		if(response.data.error) return setErrors(response.data.error)
 		
 		localStorage.setItem('usertoken', response.data)
 		return history.push('/panel')
@@ -35,6 +38,9 @@ function Signup() {
 			<input type="text" name="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
 			<button type="submit" >Cadastrar</button>
 		</form>
+		<h3>{errors.map(error => (
+			<h3>{error}</h3>
+		))}</h3>
 	</>)
 }
 

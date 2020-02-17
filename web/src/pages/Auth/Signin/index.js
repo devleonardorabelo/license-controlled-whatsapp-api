@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+
 import axios from 'axios'
 
 function Signin() {
 	
 	const [username, setUsername]= useState('')
 	const [password, setPassword]= useState('')
+	const [error, setError]= useState(null)
 
 	let history = useHistory()
 
@@ -16,8 +18,9 @@ function Signin() {
 			username,
 			password
 		})
-		console.log(response)
-		
+	
+		if(response.data.error) return setError(response.data.error)
+
 		localStorage.setItem('usertoken', response.data)
 		return history.push('/panel')
 
@@ -30,6 +33,7 @@ function Signin() {
 			<input type="text" name="password" onChange={e => setPassword(e.target.value)} />
 			<button type="submit" >Enviar</button>
 		</form>
+		<h2>{error}</h2>
 	</>)
 }
 
