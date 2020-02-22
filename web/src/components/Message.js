@@ -15,6 +15,7 @@ function Messages(props) {
 			<div className="datetime">
 				<p>{props.date}</p>
 				<p>{props.hour}</p>
+				<p>{props.whatsapp}</p>
 			</div>
 		</div>
 	)

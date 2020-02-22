@@ -15,7 +15,7 @@ function Signup() {
 	async function handleSignin(e){
 		e.preventDefault()
 		
-		const response = await axios.post('http://localhost:21068/auth/signup', {
+		const response = await axios.post('http://192.168.25.139:21068/auth/signup', {
 			username,
             password,
             whatsapp,

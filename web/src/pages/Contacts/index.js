@@ -12,7 +12,7 @@ function Contacts(){
 
         async function loadContacts(){
 
-            const response = await axios.get('http://localhost:21068/panel/contacts', { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+            const response = await axios.get('http://192.168.25.139:21068/panel/contacts', { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
             setContacts(response.data.encContacts)
             setCustomers(response.data.customers)
 
@@ -37,6 +37,7 @@ function Contacts(){
                     </li>
                 ))}
             </ul>
+            <a href="https://contacts.google.com">aa</a>
         </div>
     )
 }
