@@ -19,7 +19,6 @@ module.exports = {
 
         if(customer){
             currentCustomer = customer.id
-            console.log(currentCustomer)
         }else{            
             let customer = {
                 name,
@@ -31,11 +30,28 @@ module.exports = {
             currentCustomer = newCustomer.id
         }
 
+        let date    = new Date()
+
+        //DATE      
+        let dayWeek  = date.getDay()
+        let day      = date.getDate()
+        let month    = date.getMonth()
+        let year     = date.getFullYear()
+        let fullDate = `${dayWeek}/${day}/${month}/${year}`
+
+        //HOUR
+        let hour     = date.getHours()
+        let minutes  = date.getMinutes()
+
+        let time     = `${hour}:${minutes}`
+
         await Message.create({
             customer: currentCustomer,
             message,
             user: user.id,
-            url: req.get('referer')
+            url: req.get('referer'),
+            date: fullDate,
+            time: time
         })
 
         return res.json({message: 'mensagem salva'})

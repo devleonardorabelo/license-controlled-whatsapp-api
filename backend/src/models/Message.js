@@ -15,6 +15,7 @@ const MessageSchema = new mongoose.Schema({
         type   : Boolean,
         default: true
     },
-    date       : String
+    date       : String,
+    time       : String
 })
 module.exports = mongoose.model('Message', MessageSchema)
