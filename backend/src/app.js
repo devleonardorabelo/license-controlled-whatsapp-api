@@ -42,12 +42,12 @@ app.use(
 
 const auth      = require('./routes/auth')
 const panel     = require('./routes/panel')
-const redirects = require('./routes/redirects')
+const message   = require('./routes/message')
 const payment   = require('./routes/payment')
 
 app.use('/auth', auth)
 app.use('/panel', panel)
-app.use('/', redirects)
+app.use('/', message)
 app.use('/payment', payment)
 
 app.listen(port, () =>  {

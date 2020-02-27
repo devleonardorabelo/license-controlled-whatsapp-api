@@ -1,7 +1,10 @@
 module.exports = {
+	'server': {
+		'domainUrl': 'http://192.168.25.139:21068'
+	},
 	'paymentConfigs': {
 		'productId': '12345',
-		'domainUrl': 'http://localhost:21068',
+		'domainUrl': 'http://192.168.25.139:21068',
 		'publickKey': '',
 		'secretKey': '',
 	},

@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
     since       : String,
     whatsappKey : String,
     active      : Boolean,
-    recoverKey  : String,
+    resetToken  : String,
+    expireToken : Date
 })
 
 

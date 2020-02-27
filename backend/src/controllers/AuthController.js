@@ -5,6 +5,7 @@ const jwt           = require('jsonwebtoken')
 const User          = require('../models/User')
 const generateKey   = require('../utils/generateKey')
 const generateDate  = require('../utils/generateDate')
+const crypto        = require('crypto')
 
 const config        = require('../config/configs')
 
@@ -76,10 +77,26 @@ module.exports = {
 
     },
     async recover(req, res) {
+
         let { email } = req.body
 
         let user = await User.findOne({email})
-        if(user){
+
+        if(!user) return res.send({error: 'email não existe'})
+
+        try {
+            const token = crypto.randomBytes(20).toString('hex')
+
+            const now = new Date()
+            now.setHours(now.getHours() + 1)
+
+            await User.updateOne({_id : user.id},{
+                '$set': {
+                    resetToken: token,
+                    expireToken: now
+                }
+            })
+
             const transport = nodemailer.createTransport({
                 host: config.mailerConfigs.host,
                 port: config.mailerConfigs.port,
@@ -104,14 +121,13 @@ module.exports = {
                     keySelector: "1578084474.wule",
                     privateKey: "-----BEGIN RSA PRIVATE KEY-----MIICXAIBAAKBgQDBBBA2rEwgVaihBj3ZI21yzjdofKAqvNM7lDD2asOcGV8prdMASnIxEdE8K9YjqFfXrk9zP6pRxHGGsVWm7tEgpvvmPE03hX4sTQQ8AOiYUG9MX7B2crhrf5MKe+kmFru8nYb8/zHpffjgb2lwhGaOYNBnaLnDKMHK6F9XzxlXCwIDAQABAoGAO6yr7ptadezF0/MAEDAZ2JLVIqLVSiFTFWp9sNHVZF+bwmERiVd68pzVmcrby+5yKiakPbeDSwB3MPOGzbOsR+dtiZlDH2XKT1UxzlrrXDddYguNKUl36PHITZzfn/a/ya9pbO5oRqsE836H808KWC/x/Z1LEa79Kt/KOyrl8PECQQD95td1MLjaFpB7/qfluGW5nDjFSZEynY05E4m1NaTC0qkynQD2W7oyxUOOc6aJJF7BhfAbdyRH4jmk2uPcAa/HAkEAwpxpISkr5vEvHZkA4UZ+6uZDX/12dphS0d2wKnkFrpQkLlsCIF9BXrbNhy+7l0YJYvi5+Gx0JdjMDXP9oD8mnQJATcMtqg7KDsFqbw+HjKv1O+vE12e4uK/YWOrK+lz7oU+z0nSTnuBpHrOcBT0WfFpPSyYia8cJrZpz3THNJ8y8cQJAb3BRYwPId/40FKbAsj9D/g7NFfJ2G4MuKa7gafHTJxz9eu3yUcc6D5puJrNWoFEinuH+3Bp+iA2VCz8YROLkoQJBAKJOV7lnNeKopKmtBAB0yZE4IwnEq8FdmC1hQf1Cz8NWEtPTL1kE/LnHqyvN/XDmkY3lCQG6XQUohMX5j8i28aU=-----END RSA PRIVATE KEY-----"
                 },
-                html: `<a href='https://localhost:21068/auth/recover/new?${user.recoverKey}'>Recuperar agora</h1>`
+                html: `<a href='https://192.168.25.139:21068/auth/recover/new?${user.recoverKey}'>Recuperar agora</h1>`
             };
             transport.sendMail(mailOptions)
-            console.log(mailOptions.to) 
-        } else {
-            return res.json({erro: 'este email nao existe'})
+        } catch (err) {
+            return res.send({error: 'Houve um erro. Tente novamente'})
         }
-        return res.redirect('/auth/signin')
+      
     },
     
     async update(req, res){
@@ -128,5 +144,6 @@ module.exports = {
         }
         return res.json({status: "senha alterada"})
          
-    } 
+    },
+
 }
