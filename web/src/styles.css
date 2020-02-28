@@ -1,0 +1,120 @@
+body {
+  background-color: #f6f6f6;
+}
+
+* {
+  color: #555;
+}
+
+h1 {
+  font-size: 2em;
+  margin-top: -12px;
+}
+
+h2 {
+  font-size: 1.6em;
+  font-weight: 400;
+  color: #a9a9a9;
+}
+
+h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .logo-icon {
+    margin: 0 !important;
+  }
+  .nav-item {
+    display: block;
+    -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+    height: 60px !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+  }
+  .nav-item.message {
+    background: url("/img/message.svg") no-repeat 20px center !important;
+  }
+  .nav-item.contact {
+    background: url("/img/contact.svg") no-repeat 20px center !important;
+  }
+  .nav-item span {
+    padding: 20px 0 20px 60px;
+  }
+}
+
+.nav-item {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+}
+
+.nav-item.message {
+  background: url("/img/message.svg") no-repeat center;
+}
+
+.nav-item.contact {
+  background: url("/img/contact.svg") no-repeat center;
+}
+
+.logo-icon {
+  height: 45px;
+  width: 45px;
+  background: url("/img/logo-icon.svg") no-repeat center;
+  background-size: 100%;
+  margin-top: 28px;
+  margin-bottom: 50px;
+}
+
+.input-box {
+  border: 0;
+  padding: 5px;
+}
+
+.box {
+  border-radius: 10px;
+}
+
+.nmf {
+  background-color: #f6f6f6;
+  -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
+ -4px -4px 9px #ffffff;
+          box-shadow: 4px 4px 9px #d9d9d9, 
+ -4px -4px 9px #ffffff;
+}
+
+.new-icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+}
+
+.burger-button {
+  height: 50px;
+  width: 50px;
+}
+
+button.nmf, a.nmf {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+}
+
+a.nmf:active, .input-box:hover, button.nmf:active {
+  -webkit-box-shadow: 4px 4px 9px #ffffff, 
+ -4px -4px 9px #d9d9d9;
+          box-shadow: 4px 4px 9px #ffffff, 
+ -4px -4px 9px #d9d9d9;
+}
+
+a.nmf:active a, .input-box:hover a, button.nmf:active a {
+  color: inherit;
+}
+
+.date {
+  color: #25d366;
+  margin-top: 5px;
+}
+/*# sourceMappingURL=panel.css.map */

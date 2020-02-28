@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { Link } from 'react-router-dom'
 
 function Nav() {
 
@@ -10,18 +10,24 @@ function Nav() {
 	}
 
 	return(
-		/*<nav>
-			<button className="toggle-nav" onClick={ () => {toggle()} }><img src="/img/open-menu.svg" alt="Abrir Menu" title="Abrir Menu" /></button>
-			<img src="/img/logo.png" alt="GerenciaZap" title="GerenciaZap" className="logo" />
-			<ul className={`${isActive ? 'active' : ''}`}>
-				<li><a href="#functionalities">Funcionalidades</a></li>
-				<li><a href="#signature">Assinatura</a></li>
-				<li><a href="#how-to">Integração</a></li>
-				<li><a href="#support">Suporte</a></li>
-				<li><a href="login.html">Login</a></li>
-				<li><a href="" className="btn-testar">Ganhe R$15,90 para Testar</a></li>
-			</ul>
-		</nav>*/
+		<nav>
+            <div className="nav-header m-1">
+                <div className="logo-full">GerenciaZap</div>
+                <button className="burger-button nmf" id="burger-button" onClick={ () => {toggle()} }></button> 
+            </div>
+            <div className={`nav px-1 ${isActive ? 'active' : ''}`}>
+                <Link className="logo-icon" to="/"></Link>
+                <Link className="nav-item nmf mb-1 message" to="/">
+                    <span className="item">Home</span>
+                </Link>
+                <Link className="nav-item nmf mb-1 contact" to="/contacts">
+                    <span className="item">Contacts</span>
+                </Link>
+                <Link className="nav-item nmf mb-1 report" to="/reports">
+                    <span className="item">Reports</span>
+                </Link>
+            </div>            
+        </nav>
 	)
 }
 

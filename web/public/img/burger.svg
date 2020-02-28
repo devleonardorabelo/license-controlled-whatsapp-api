@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="30" height="30" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-burger">
+      <rect width="40" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="burger" clip-path="url(#clip-burger)">
+    <g id="Componente_2_1" data-name="Componente 2 – 1" transform="translate(5 5)" clip-path="url(#clip-path)">
+      <line id="Linha_4" data-name="Linha 4" x2="21" transform="translate(7 15)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="4"/>
+      <line id="Linha_5" data-name="Linha 5" x2="26" transform="translate(2 2)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="4"/>
+      <path id="Caminho_2" data-name="Caminho 2" d="M0,0H26" transform="translate(2 28)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="4"/>
+    </g>
+  </g>
+</svg>

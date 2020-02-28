@@ -1,23 +1,23 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Messages(props) {
 	return(
-		<div className="messages" key={props.key}>
-			<div className="content">
-				<div className="icon">
-					<img src={props.image} alt="" />
-				</div>
-				<div className="text">
-					<h4 className="title-message">{props.customer}</h4>
-					<p className="grey-text">{props.message}</p>	
-				</div>	
+		
+		<div class="d-row box nmf">
+			<div>
+				<div class="nmf new-icon m-1"></div>
 			</div>
-			<div className="datetime">
-				<p>{props.date}</p>
-				<p>{props.hour}</p>
-				<p>{props.whatsapp}</p>
+			<div class="grow-1 px-1">
+				<h3 class="mt-1">{props.customer}</h3>
+				<p>{props.message}</p>
+				<div class="d-row align-end my-1">
+					<Link to='/' class="nmf ml-1"></Link>
+					<Link to='/' class="nmf ml-1"></Link>
+				</div>
 			</div>
 		</div>
+		
 	)
 }
 

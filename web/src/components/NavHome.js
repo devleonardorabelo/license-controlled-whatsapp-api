@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-
 function NavHome() {
 
 	const [ isActive, setIsActive ] = useState(false)
