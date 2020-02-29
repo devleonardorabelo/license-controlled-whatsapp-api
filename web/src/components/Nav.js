@@ -1,9 +1,40 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { NavHeader, FullLogo, ResponsiveLogo, ButtonBurger, NavItem, Item } from './StyledComponents'
+
 
 function Nav() {
 
 	const [ isActive, setIsActive ] = useState(false)
+
+    const ResponsiveNav = styled.div`
+        @media (max-width: 860px) {
+            max-height: 0px;
+            overflow-y: hidden;
+        }
+
+        -webkit-animation: ${isActive ? 'toggleMenu 1.3s forwards' : ''};
+        animation: ${isActive ? 'toggleMenu 1.3s forwards' : ''};
+
+        @-webkit-keyframes toggleMenu {
+            0% {
+                max-height: 0px;
+            }
+            100% {
+                max-height: 100vh;
+            }
+        }
+        
+        @keyframes toggleMenu {
+            0% {
+                max-height: 0px;
+            }
+            100% {
+                max-height: 100vh;
+            }
+        }
+    `;
 
 	const toggle = () => {
 		setIsActive(!isActive)
@@ -11,22 +42,28 @@ function Nav() {
 
 	return(
 		<nav>
-            <div className="nav-header m-1">
-                <div className="logo-full">GerenciaZap</div>
-                <button className="burger-button nmf" id="burger-button" onClick={ () => {toggle()} }></button> 
-            </div>
-            <div className={`nav px-1 ${isActive ? 'active' : ''}`}>
-                <Link className="logo-icon" to="/"></Link>
-                <Link className="nav-item nmf mb-1 message" to="/">
-                    <span className="item">Home</span>
+            <NavHeader>
+                <ResponsiveLogo>GerenciaZap</ResponsiveLogo>
+                <ButtonBurger onClick={ () => {toggle()} }></ButtonBurger> 
+            </NavHeader>
+            <ResponsiveNav>
+                <Link to="/"><FullLogo></FullLogo></Link>
+                <Link to="/">
+                    <NavItem>
+                        <Item>Home</Item> 
+                    </NavItem>
                 </Link>
-                <Link className="nav-item nmf mb-1 contact" to="/contacts">
-                    <span className="item">Contacts</span>
+                <Link to="/">
+                    <NavItem>
+                        <Item>Home</Item> 
+                    </NavItem>
                 </Link>
-                <Link className="nav-item nmf mb-1 report" to="/reports">
-                    <span className="item">Reports</span>
+                <Link to="/">
+                    <NavItem>
+                        <Item>Home</Item> 
+                    </NavItem>
                 </Link>
-            </div>            
+            </ResponsiveNav>            
         </nav>
 	)
 }

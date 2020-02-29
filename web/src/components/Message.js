@@ -1,23 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { RowEnd, RowNmf, IconNmf, Grow1, Title3, Text, ButtonAction } from './StyledComponents'
+
 function Messages(props) {
 	return(
-		
-		<div class="d-row box nmf">
+		<RowNmf>
 			<div>
-				<div class="nmf new-icon m-1"></div>
+				<IconNmf></IconNmf>
 			</div>
-			<div class="grow-1 px-1">
-				<h3 class="mt-1">{props.customer}</h3>
-				<p>{props.message}</p>
-				<div class="d-row align-end my-1">
-					<Link to='/' class="nmf ml-1"></Link>
-					<Link to='/' class="nmf ml-1"></Link>
-				</div>
-			</div>
-		</div>
-		
+			<Grow1>
+				<Title3>{props.customer}</Title3>
+				<Text>{props.message}</Text>
+				<RowEnd>
+					<Link to='/'><ButtonAction></ButtonAction></Link>
+					<Link to='/'><ButtonAction></ButtonAction></Link>
+				</RowEnd>
+			</Grow1>
+		</RowNmf>
 	)
 }
 

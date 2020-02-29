@@ -5,9 +5,7 @@ import Header from '../../components/Header'
 import Message from '../../components/Message'
 import Title from '../../components/Title'
 
-import '../../structure.css'
-import '../../styles.css'
-
+import { Row, RowToColumn, Main, Container2 } from '../../components/StyledComponents'
 
 function Panel() {
 
@@ -30,20 +28,20 @@ function Panel() {
 
 	return (
 
-    <div className="d-row d-row-to-column">
+    <RowToColumn>
         <Nav />
-        <main className="d-column grow-1">
+        <Main>
             <Header />
             <Title />
-            <section className="d-row d-row-to-column">
+            <RowToColumn>
               {messages.map(message => (
-                <div className="container-2 p-1" key={message._id}>
+                <Container2 key={message._id}>
                     <Message customer={message.customer.name} message={message.message} />
-                </div>
+                </Container2>
               ))}
-            </section>
-        </main>    
-    </div>
+            </RowToColumn>
+        </Main>    
+    </RowToColumn>
 
 
   )
