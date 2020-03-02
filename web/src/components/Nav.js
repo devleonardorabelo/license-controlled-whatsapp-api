@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { NavHeader, FullLogo, ResponsiveLogo, ButtonBurger, NavItem, Item } from './StyledComponents'
+import { NavHeader, FullLogo, ResponsiveLogo, ButtonBurger, NavItem, ItemMessage, ItemContact, Item } from './StyledComponents'
 
 
 function Nav() {
@@ -9,7 +9,9 @@ function Nav() {
 	const [ isActive, setIsActive ] = useState(false)
 
     const ResponsiveNav = styled.div`
+        padding: 20px;
         @media (max-width: 860px) {
+            padding: 0 20px !important;
             max-height: 0px;
             overflow-y: hidden;
         }
@@ -43,24 +45,24 @@ function Nav() {
 	return(
 		<nav>
             <NavHeader>
-                <ResponsiveLogo>GerenciaZap</ResponsiveLogo>
+                <ResponsiveLogo></ResponsiveLogo>
                 <ButtonBurger onClick={ () => {toggle()} }></ButtonBurger> 
             </NavHeader>
             <ResponsiveNav>
                 <Link to="/"><FullLogo></FullLogo></Link>
                 <Link to="/">
-                    <NavItem>
-                        <Item>Home</Item> 
-                    </NavItem>
+                    <ItemMessage>
+                        <Item>Mensagens</Item> 
+                    </ItemMessage>
+                </Link>
+                <Link to="/">
+                    <ItemContact>
+                        <Item>Contatos</Item> 
+                    </ItemContact>
                 </Link>
                 <Link to="/">
                     <NavItem>
-                        <Item>Home</Item> 
-                    </NavItem>
-                </Link>
-                <Link to="/">
-                    <NavItem>
-                        <Item>Home</Item> 
+                        <Item>Suporte</Item> 
                     </NavItem>
                 </Link>
             </ResponsiveNav>            

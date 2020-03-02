@@ -37,6 +37,7 @@ export const RowEnd = styled(Row)`
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
+    padding: 0px !important;
 `;
 export const RowToColumn = styled.div`
     display: -webkit-box;
@@ -55,18 +56,38 @@ export const RowToColumn = styled.div`
         flex-direction: column !important;
     }
 `;
+export const BodyRow = styled(RowToColumn)`
+    background: #f6f6f6;
+    min-height: 100vh;
+    font-family: Segoe UI !important;
+`;
+export const Column = styled.div`
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 20px;
+`;
 export const Container1 = styled.div`
     width: 100%;
 `;
 export const Container2 = styled.div`
     width: 50%;
     padding: 20px;
+    @media (max-width: 860px){
+        width: 100% !important;
+    }
 `;
 export const Grow1 = styled.div`
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    padding: 0 20px;
+    padding-left: 20px;
 `;
 export const NavHeader = styled.div`
     display: none;
@@ -84,12 +105,18 @@ export const NavHeader = styled.div`
         display: flex !important;
     }
 `;
+
 export const NavItem = styled.div`
     height: 50px;
     width: 50px;
     border-radius: 100%;
     margin-bottom: 20px;
-    background: red;
+    background-color: #f6f6f6;
+    color: #333;
+    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
+   -4px -4px 9px #ffffff;
+    box-shadow: 4px 4px 9px #d9d9d9, 
+   -4px -4px 9px #ffffff;
     @media (max-width: 860px) {
         display: block;
         -webkit-box-sizing: content-box;
@@ -97,6 +124,18 @@ export const NavItem = styled.div`
         height: 60px !important;
         width: 100% !important;
         border-radius: 10px !important;
+    }
+`;
+export const ItemMessage = styled(NavItem)`
+    background: url("/img/message.svg") no-repeat center;
+    @media (max-width: 860px){
+        background-position: 20px center !important;
+    }
+`;
+export const ItemContact = styled(NavItem)`
+    background: url("/img/contact.svg") no-repeat center;
+    @media (max-width: 860px){
+        background-position: 20px center !important;
     }
 `;
 export const Item = styled.span`
@@ -126,6 +165,7 @@ export const SearchBox = styled.form`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    padding: 5px;
     border-radius: 10px;
     background-color: #f6f6f6;
     -webkit-box-shadow: 4px 4px 9px #d9d9d9, 

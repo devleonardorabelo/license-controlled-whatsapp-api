@@ -5,7 +5,7 @@ import Header from '../../components/Header'
 import Message from '../../components/Message'
 import Title from '../../components/Title'
 
-import { Row, RowToColumn, Main, Container2 } from '../../components/StyledComponents'
+import { BodyRow, RowToColumn, Main, Container2 } from '../../components/StyledComponents'
 
 function Panel() {
 
@@ -15,7 +15,7 @@ function Panel() {
 
     async function loadMessages(){
 
-      const response = await axios.get('http://192.168.25.139:21068/panel', { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+      const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/panel`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
       setMessages(response.data.message)
       setStatus(response.data.status)
 
@@ -28,7 +28,7 @@ function Panel() {
 
 	return (
 
-    <RowToColumn>
+    <BodyRow>
         <Nav />
         <Main>
             <Header />
@@ -41,7 +41,7 @@ function Panel() {
               ))}
             </RowToColumn>
         </Main>    
-    </RowToColumn>
+    </BodyRow>
 
 
   )

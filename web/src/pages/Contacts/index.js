@@ -12,7 +12,7 @@ function Contacts(){
 
         async function loadContacts(){
 
-            const response = await axios.get('http://192.168.25.139:21068/panel/contacts', { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+            const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/panel/contacts`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
             setContacts(response.data.encContacts)
             setCustomers(response.data.customers)
 

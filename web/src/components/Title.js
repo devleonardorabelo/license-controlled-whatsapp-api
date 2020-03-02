@@ -1,13 +1,13 @@
 import React from 'react'
-
+import { Container1, Title2, Title1, Column } from './StyledComponents'
 function Title(){
     return (
-        <div class="container-1 p-1">
-            <div>
-                <h2>Novas</h2>
-                <h1>Mensagens</h1>    
-            </div>
-        </div>
+        <Container1>
+            <Column>
+                <Title2>Novas</Title2>
+                <Title1>Mensagens</Title1>    
+            </Column>
+        </Container1>
     )
 }
 
