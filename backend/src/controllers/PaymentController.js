@@ -1,5 +1,4 @@
-const config      = require('../config/configs')
-const stripe      = require('stripe')(config.paymentConfigs.secretKey)
+const stripe      = require('stripe')(process.env.PAYMENT_SECRET_KEY)
 const User        = require('../models/User')
 const generateKey = require('../utils/generateKey')
 
@@ -11,8 +10,8 @@ module.exports = {
         console.log(session)
     },
     async create(req, res) {
-        const planId = config.paymentConfigs.productId
-        const domainUrl = config.paymentConfigs.domainURL
+        const planId = process.env.PAYMENT_PRODUCT_ID
+        const domainUrl = process.env.DOMAIN
         let session
 
         session = await stripe.checkout.sessions.create({
@@ -34,7 +33,7 @@ module.exports = {
       },
       async public(req, res) {
         res.send({
-          publicKey: config.paymentConfigs.publicKey
+          publicKey: process.env.PAYMENT_PUBLIC_KEY
         })
       },
       async store(req, res) {

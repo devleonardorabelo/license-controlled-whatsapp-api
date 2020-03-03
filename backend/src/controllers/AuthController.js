@@ -7,8 +7,6 @@ const generateKey   = require('../utils/generateKey')
 const generateDate  = require('../utils/generateDate')
 const crypto        = require('crypto')
 
-const config        = require('../config/configs')
-
 module.exports = {
     async signin(req, res) {
         
@@ -28,7 +26,7 @@ module.exports = {
             whatsapp: user.whatsapp
         }
 
-        let token = jwt.sign(payload, config.secret, {
+        let token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: 500,
         })
 
@@ -69,7 +67,7 @@ module.exports = {
             whatsapp: newUser.whatsapp
         }
 
-        let token = jwt.sign(payload, config.secret, {
+        let token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: 500,
         })
 
@@ -98,12 +96,12 @@ module.exports = {
             })
 
             const transport = nodemailer.createTransport({
-                host: config.mailerConfigs.host,
-                port: config.mailerConfigs.port,
+                host: process.env.MAILER_HOST,
+                port: process.env.MAILER_PORT,
                 secure: false,
                 auth: {
-                    user: config.mailerConfigs.noReplyMail,
-                    pass: config.mailerConfigs.noReplyPwd
+                    user: process.env.NO_REPLY_MAIL,
+                    pass: process.env.NO_REPLY_PWD
                 }
             })
             var mailOptions = {

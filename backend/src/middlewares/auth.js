@@ -1,5 +1,4 @@
 const jwt        = require('jsonwebtoken')
-const config = require('../config/configs')
 
 module.exports = (req, res, next) => {
     
@@ -18,7 +17,7 @@ module.exports = (req, res, next) => {
     if(!/^Bearer$/i.test(scheme))
         return res.status(401).send({ error: 'Token malformated' })
 
-    jwt.verify(token, config.secret, (err, decoded) => {
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
         if(err) return res.status(401).send({ error: 'Token invalid' })
 
         currentUser = decoded
