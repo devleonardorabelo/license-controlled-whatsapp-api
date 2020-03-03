@@ -1,1 +1,1 @@
-web: web/yarn start
+web: /web/yarn start
