@@ -12,7 +12,7 @@ require('dotenv').config()
 
 app.use(cors()) // ALTERAR PARA URL ESPECIFICA
 
-mongoose.connect('mongodb://localhost:27017/apiwhatsapp',{//mongodb://localhost:27017/apiwhatsappmongodb://wule02:91427507@mongodb.wule.com.br/wule02
+mongoose.connect(`${process.env.BD}`,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => {
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(session({
-    secret: '44(%09u7*jgjtk&218g1erg41fstkytdr8',
+    secret: `${process.env.SECRET_API}`,
     resave: true,
     saveUninitialized: true
 }))
