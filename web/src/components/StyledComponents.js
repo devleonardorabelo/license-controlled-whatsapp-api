@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 //Structure
-
 export const Row = styled.div`
     display: -webkit-box;
     display: -ms-flexbox;
@@ -72,6 +71,22 @@ export const Column = styled.div`
     -ms-flex-direction: column;
     flex-direction: column;
     padding: 20px;
+`;
+export const ColumnCenter =  styled(Column)`
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0;
+`;
+export const Form = styled(Column)`
+    max-width: 50vw;
+    min-width: 300px;
+    margin: 0 auto;
+`;
+export const Body = styled(Column)`
+    background-color: #f6f6f6;
+    min-height: 100vh;
+    font-family: Segoe UI !important;
+    padding: 0px;
 `;
 export const Container1 = styled.div`
     width: 100%;
@@ -183,6 +198,16 @@ export const InputText = styled.input`
     border: 0;
     background: transparent;   
 `;
+export const InputTextNmf = styled(InputText)`
+    border-radius: 20px;
+    background-color: #f6f6f6;
+    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
+    -4px -4px 9px #ffffff;
+    flex-grow: 0;
+    box-shadow: 4px 4px 9px #d9d9d9, 
+    -4px -4px 9px #ffffff;
+    margin-bottom: 20px;
+`;
 export const Button = styled.button`
     height: 50px;
     width: 50px;
@@ -202,6 +227,24 @@ export const ButtonAction = styled(Button)`
     box-shadow: 4px 4px 9px #d9d9d9, 
     -4px -4px 9px #ffffff;
     margin-left: 20px;
+`;
+export const ButtonSign = styled.button`
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background-color: #f6f6f6;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    text-align: center;
+    color: #333;
+    font-size: 1em;
+`;
+export const ButtonSignNmf = styled(ButtonSign)`
+    background-color: #f6f6f6;
+    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
+    -4px -4px 9px #ffffff;
+    box-shadow: 4px 4px 9px #d9d9d9, 
+    -4px -4px 9px #ffffff;
 `;
 export const ButtonBurger = styled(Button)`
     -ms-flex-item-align: end;
@@ -233,6 +276,7 @@ export const IconNmf = styled(Icon)`
 export const Title1 = styled.h1`
     font-size: 2em;
     margin-top: -12px;
+    margin-bottom: 20px;
 `;
 export const Title2 = styled.h2`
     font-size: 1.6em;

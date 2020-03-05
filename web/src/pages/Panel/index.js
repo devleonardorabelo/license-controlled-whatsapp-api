@@ -15,7 +15,7 @@ function Panel() {
 
     async function loadMessages(){
 
-      const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/panel`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+      const response = await axios.get(`${process.env.REACT_APP_BACK_DOMAIN}/panel`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
       setMessages(response.data.message)
       setStatus(response.data.status)
 

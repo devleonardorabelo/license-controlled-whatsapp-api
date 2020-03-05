@@ -9,7 +9,6 @@ const crypto        = require('crypto')
 
 module.exports = {
     async signin(req, res) {
-        
         let { username, password } = req.body
         let user = await User.findOne({username})
         if(!user){
@@ -29,7 +28,7 @@ module.exports = {
         let token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: 500,
         })
-
+        console.log(token)
         res.send(token)
         
     },
