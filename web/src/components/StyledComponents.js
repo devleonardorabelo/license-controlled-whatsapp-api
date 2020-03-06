@@ -55,6 +55,9 @@ export const RowToColumn = styled.div`
         flex-direction: column !important;
     }
 `;
+export const RowToColumnWrap = styled(RowToColumn)`
+    flex-wrap: wrap;
+`;
 export const BodyRow = styled(RowToColumn)`
     background: #f6f6f6;
     min-height: 100vh;

@@ -12,14 +12,13 @@ module.exports = {
             month: 0
         }   
 
-
         now = new Date
         
         currentMonth = now.getMonth()+1
         currentDay   = now.getDate()
 
         for (const eachMsg of message) {
-            console.log(eachMsg.date)
+            
             let eachDate      = eachMsg.date.split('/') // [0]dayOfWeek, [1]day, [2]month, [3]year
             let initialDay    = (eachDate[1] - eachDate[0]).toString()
 
@@ -35,8 +34,11 @@ module.exports = {
             if(eachDate[2] == currentMonth) status.month++
 
         }
-
+        let user = await User.findOne({_id: currentUser.id})
         return res.send({message, status})
         
+    },
+    async destroy(req, res){
+         return Message.deleteOne({_id: req.query.id})
     }
 }

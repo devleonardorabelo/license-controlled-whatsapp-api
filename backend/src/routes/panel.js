@@ -10,4 +10,6 @@ routes.get('/', PanelController.show)
 
 routes.get('/contacts', ContactController.show)
 
+routes.delete('/delete', PanelController.destroy)
+
 module.exports = routes
