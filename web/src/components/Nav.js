@@ -50,12 +50,12 @@ function Nav() {
             </NavHeader>
             <ResponsiveNav>
                 <Link to="/"><FullLogo></FullLogo></Link>
-                <Link to="/">
+                <Link to="/panel">
                     <ItemMessage>
                         <Item>Mensagens</Item> 
                     </ItemMessage>
                 </Link>
-                <Link to="/">
+                <Link to="/contacts">
                     <ItemContact>
                         <Item>Contatos</Item> 
                     </ItemContact>

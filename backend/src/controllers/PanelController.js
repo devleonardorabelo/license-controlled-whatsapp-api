@@ -35,7 +35,9 @@ module.exports = {
 
         }
         let user = await User.findOne({_id: currentUser.id})
-        return res.send({message, status})
+        let license = user.active
+        return res.send({message, status, license})
+        
         
     },
     async destroy(req, res){

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Nav from '../../components/Nav'
+import Header from '../../components/Header'
+import Title from '../../components/Title'
+import { BodyRow, Main, RowEnd, Container1, ButtonAction, Column, RowNmf } from '../../components/StyledComponents'
 
 function Contacts(){
 
     const [ contacts, setContacts ] = useState()
     const [ customers, setCustomers] = useState([])
-    const header = ["Name,Given Name,Additional Name,Family Name,Yomi Name,Given Name Yomi,Additional Name Yomi,Family Name Yomi,Name Prefix,Name Suffix,Initials,Nickname,Short Name,Maiden Name,Birthday,Gender,Location,Billing Information,Directory Server,Mileage,Occupation,Hobby,Sensitivity,Priority,Subject,Notes,Language,Photo,Group Membership,Phone 1 - Type,Phone 1 - Value,Phone 2 - Type,Phone 2 - Value,Organization 1 - Type,Organization 1 - Name,Organization 1 - Yomi Name,Organization 1 - Title,Organization 1 - Department,Organization 1 - Symbol,Organization 1 - Location,Organization 1 - Job Description"]
-
+    const filename = `contacts${Date.now()}.csv`
 
     useEffect(() => {
 
@@ -22,23 +25,30 @@ function Contacts(){
 
             
     }, [])
-    
-    console.log(contacts)
-
 
     return (
-        <div>
-            <a href={contacts} download="mydata.csv">Baixar</a>
-            <ul>
-                {customers.map(customer => (
-                    <li key={customer._id}>
-                        <p>{customer.name}</p>
-                        <p>{customer.whatsapp}</p>
-                    </li>
-                ))}
-            </ul>
-            <a href="https://contacts.google.com">aa</a>
-        </div>
+        <BodyRow>
+            <Nav />
+            <Main>
+                <Header />
+                <Title title1="Meus" title2="Contatos" />             
+                      
+                <Column>
+                    {customers.map(customer => (
+                        <RowNmf key={customer._id}>
+                            <p>{customer.name}</p>
+                            <p>{customer.whatsapp}</p>
+                        </RowNmf>
+                    ))}
+                </Column>
+                <Column>
+                    <RowEnd>
+                        <ButtonAction as="a" href={contacts} download={filename} onClick={() => {window.open('https://contacts.google.com/')}}>^</ButtonAction>     
+                    </RowEnd>
+                </Column>
+            </Main>
+            
+        </BodyRow>
     )
 }
 

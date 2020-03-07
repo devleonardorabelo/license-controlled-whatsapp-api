@@ -75,6 +75,13 @@ export const Column = styled.div`
     flex-direction: column;
     padding: 20px;
 `;
+export const ColumnNmf = styled(Column)`
+    background-color: #f6f6f6;
+    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
+    -4px -4px 9px #ffffff;
+    box-shadow: 4px 4px 9px #d9d9d9, 
+    -4px -4px 9px #ffffff;   
+`;
 export const ColumnCenter =  styled(Column)`
     justify-content: center;
     min-height: 100vh;
@@ -293,6 +300,13 @@ export const Title3 = styled.h3`
 export const Text = styled.p`
     font-size: 1em;
     font-weigth: 300;
+`;
+export const HiddenText = styled.div`
+    grow: 1;
+    background: #e6e6e6;
+    border-radius: 10px;
+    height: 30px;
+    margin: 10px 0;
 `;
 
 //More

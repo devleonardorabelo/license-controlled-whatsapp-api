@@ -5,12 +5,13 @@ import Nav from '../../components/Nav'
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 
-import { BodyRow, RowToColumn, Main, Container2, RowNmf, IconNmf, Grow1, Title3, Text, RowEnd, ButtonAction, RowToColumnWrap } from '../../components/StyledComponents'
+import { BodyRow, RowToColumn, Main, Container2, RowNmf, IconNmf, Grow1, Title3, Text, RowEnd, ButtonAction, RowToColumnWrap, HiddenText } from '../../components/StyledComponents'
 
 function Panel() {
 
   const [messages, setMessages] = useState([])
   const [status, setStatus] = useState([])  
+  const [license, setLicense] = useState()
   const [update, setUpdate] = useState(false)
 
   useEffect(() => {
@@ -20,6 +21,7 @@ function Panel() {
       const response = await axios.get(`${process.env.REACT_APP_BACK_DOMAIN}/panel`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
       setMessages(response.data.message)
       setStatus(response.data.status)
+      setLicense(response.data.license)
 
     }
     
@@ -38,7 +40,7 @@ function Panel() {
         <Nav />
         <Main>
             <Header />
-            <Title />
+            <Title title1="Minhas" title2="Mensagens"/>
             <RowToColumnWrap>
               {messages.map(message => (
                 <Container2 key={message._id}>
@@ -48,10 +50,14 @@ function Panel() {
                       </div>
                       <Grow1>
                         <Title3>{message.customer.name}</Title3>
-                        <Text>{message.message}</Text>
+                        {license ? <Text>{message.message}</Text> : <HiddenText />}
                         <RowEnd>
                           <ButtonAction onClick={() => {handleDestroy(message._id)}}>x</ButtonAction>
-                          <ButtonAction as="a" target="_blank" href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`}>></ButtonAction>
+                          {license ? 
+                            <ButtonAction as="a" target="_blank" href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`}>></ButtonAction>
+                            :
+                            <Link to="/signature"><ButtonAction target="_blank">></ButtonAction></Link>
+                          }
                         </RowEnd>
                       </Grow1>
                     </RowNmf>

@@ -28,7 +28,6 @@ module.exports = {
         let token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: 500,
         })
-        console.log(token)
         res.send(token)
         
     },
