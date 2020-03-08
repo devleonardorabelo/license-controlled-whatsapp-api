@@ -22,7 +22,8 @@ module.exports = {
         const payload = {
             id: user.id,
             username: user.username,
-            whatsapp: user.whatsapp
+            whatsapp: user.whatsapp,
+            email: user.email
         }
 
         let token = jwt.sign(payload, process.env.SECRET, {
@@ -52,9 +53,10 @@ module.exports = {
             password: passwordHash,
             whatsapp,
             email,
+            whatsappKey: generateKey(),
             since: generateDate(),
             recoverKey: await bcrypt.hash(generateKey(), 10),
-            active: true
+            active: false
         }
 
         let newUser = await User.create(user)

@@ -5,14 +5,13 @@ import Nav from '../../components/Nav'
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 
-import { BodyRow, RowToColumn, Main, Container2, RowNmf, IconNmf, Grow1, Title3, Text, RowEnd, ButtonAction, RowToColumnWrap, HiddenText } from '../../components/StyledComponents'
+import { BodyRow, Main, Container2, RowNmf, IconNmf, Grow1, Title3, Text, RowEnd, ButtonAction, RowToColumnWrap, HiddenText } from '../../components/StyledComponents'
 
 function Panel() {
 
   const [messages, setMessages] = useState([])
   const [status, setStatus] = useState([])  
   const [license, setLicense] = useState()
-  const [update, setUpdate] = useState(false)
 
   useEffect(() => {
 
@@ -27,11 +26,11 @@ function Panel() {
     
     loadMessages() 
     
-  }, [update])
+  }, [])
 
-  const handleDestroy = (id) => {
-    const response = axios.delete(`${process.env.REACT_APP_BACK_DOMAIN}/panel/delete?id=${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
-    setUpdate(!update)
+  const handleDestroy = async (id) => {
+    const response = await axios.delete(`${process.env.REACT_APP_BACK_DOMAIN}/panel/delete?id=${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+    setMessages(response.data.message)
   }
 
 	return (

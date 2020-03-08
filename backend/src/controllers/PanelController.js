@@ -41,6 +41,9 @@ module.exports = {
         
     },
     async destroy(req, res){
-         return Message.deleteOne({_id: req.query.id})
+        await Message.deleteOne({_id: req.query.id})
+        let message = await Message.find({user: currentUser.id}).populate('customer')
+
+        return res.send({message})
     }
 }

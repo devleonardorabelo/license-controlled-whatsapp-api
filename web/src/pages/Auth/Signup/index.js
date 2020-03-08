@@ -55,7 +55,7 @@ function Signup() {
 	return (<>
 		<Body>
 			<ColumnCenter>
-				<Form onSubmit={handleSignin}>
+				<Form as="form" onSubmit={handleSignin}>
 					<Title1>Criar conta</Title1>
 					<InputTextNmf name="username" placeholder="username" onChange={e => setUsername(e.target.value)} />
 					<InputTextNmf name="whatsapp" placeholder="whatsapp" onChange={e => setWhatsapp(e.target.value)} />
