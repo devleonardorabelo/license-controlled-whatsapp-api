@@ -15,7 +15,7 @@ module.exports = {
         
         const { name, email, whatsapp, message } = req.body
 
-        let customer = await Customer.findOne({whatsapp})
+        let customer = await Customer.findOne({whatsapp, user: user.id})
 
         if(customer){
             currentCustomer = customer.id

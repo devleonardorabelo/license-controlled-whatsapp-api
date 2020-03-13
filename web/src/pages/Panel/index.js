@@ -5,7 +5,7 @@ import Nav from '../../components/Nav'
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 
-import { BodyRow, Main, Container2, RowNmf, IconNmf, Grow1, Title3, Text, RowEnd, ButtonAction, RowToColumnWrap, HiddenText } from '../../components/StyledComponents'
+import { BodyRow, Main, Container2, Row, IconNmf, Grow1, Box, Title3, Text, RowEnd, ButtonAction, RowToColumnWrap, HiddenText } from '../../components/StyledComponents'
 
 function Panel() {
 
@@ -43,7 +43,8 @@ function Panel() {
             <RowToColumnWrap>
               {messages.map(message => (
                 <Container2 key={message._id}>
-                    <RowNmf>
+                  <Box>
+                    <Row>
                       <div>
                         <IconNmf></IconNmf>
                       </div>
@@ -59,7 +60,9 @@ function Panel() {
                           }
                         </RowEnd>
                       </Grow1>
-                    </RowNmf>
+                    </Row>  
+                  </Box>
+                  
                 </Container2>
               ))}
             </RowToColumnWrap>

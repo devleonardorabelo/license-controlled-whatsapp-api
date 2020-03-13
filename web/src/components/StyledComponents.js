@@ -11,7 +11,6 @@ export const Row = styled.div`
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
-    padding: 20px;
     @media (max-width: 860px) {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -73,7 +72,6 @@ export const Column = styled.div`
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    padding: 20px;
 `;
 export const ColumnNmf = styled(Column)`
     background-color: #f6f6f6;
@@ -99,11 +97,12 @@ export const Body = styled(Column)`
     padding: 0px;
 `;
 export const Container1 = styled.div`
+    padding: 20px 20px 0;
     width: 100%;
 `;
 export const Container2 = styled.div`
     width: 50%;
-    padding: 20px;
+    padding: 20px 20px 0;
     @media (max-width: 860px){
         width: 100% !important;
     }
@@ -113,6 +112,15 @@ export const Grow1 = styled.div`
     -ms-flex-positive: 1;
     flex-grow: 1;
     padding-left: 20px;
+`;
+
+export const Box = styled.div`
+    padding: 20px;
+    background-color: #f6f6f6;
+    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
+    -4px -4px 9px #ffffff;
+    box-shadow: 4px 4px 9px #d9d9d9, 
+    -4px -4px 9px #ffffff;  
 `;
 export const NavHeader = styled.div`
     display: none;
