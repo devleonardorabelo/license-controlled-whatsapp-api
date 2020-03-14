@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom'
 import { loadStripe } from "@stripe/stripe-js";
-import Nav from '../../components/Nav'
-import Title from '../../components/Title'
+
 import { BodyRow, Main, Container1, Container2, Grow1, Box, InputTextNmf, Column, RowEnd, ButtonAction, Button, Row } from '../../components/StyledComponents'
 
 import axios from "axios";
@@ -48,37 +47,15 @@ const CheckoutForm = () => {
     
   };
 
-  return (
+  return (<>
     
-    <BodyRow>
-      <Nav />
-      <Main>
-        <Title title1='Comprar' title2='Licensa' />
-        <Column>
-          <Column>
             <form onSubmit={handleSubmit}>
-              <Container2>
-                <Box>
-                    <Grow1><CardElement/></Grow1>
-                </Box>  
-              </Container2>
-              <Container2>
-                <InputTextNmf />
-              </Container2>
-              
+              <CardElement/>
             </form>
-          </Column>
-          <Container1>
-            <RowEnd>
-              <ButtonAction type="submit" disabled={!stripe || sent} onClick={setSent}>Pay</ButtonAction>  
-            </RowEnd>
-          </Container1>
-        </Column>
-        
-      </Main>
-    </BodyRow>
 
-  );
+              <button type="submit" disabled={!stripe || sent} onClick={setSent}>Pay</button>  
+
+  </>);
 };
 
 const stripePromise = loadStripe('pk_test_pPOC14ljvMHYJOODJ7mOXtJe00Pter1jsE');

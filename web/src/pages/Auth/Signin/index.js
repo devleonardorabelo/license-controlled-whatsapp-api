@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
-import { Form, Title1, Body, InputTextNmf, ButtonSignNmf, ButtonSign, ColumnCenter, Container1} from '../../../components/StyledComponents'
+import { } from '../../../components/StyledComponents'
 import styled from 'styled-components'
 
 import axios from 'axios'
@@ -49,23 +49,20 @@ function Signin() {
 	}
 
 	return (<>
-		<Body>
-			<ColumnCenter>
-				<Form as="form" onSubmit={handleSignin}>
-					<Title1>Entrar</Title1>
-					<InputTextNmf name="username" placeholder="usuário" onChange={e => setUsername(e.target.value)}/>
-					<InputTextNmf name="password" type="password" placeholder="senha" onChange={e => setPassword(e.target.value)}/>
-					<Container1>
-						<ButtonSignNmf type="submit">entrar</ButtonSignNmf>
+
+				<form as="form" onSubmit={handleSignin}>
+					<h2>Entrar</h2>
+					<input name="username" placeholder="usuário" onChange={e => setUsername(e.target.value)}/>
+					<input name="password" type="password" placeholder="senha" onChange={e => setPassword(e.target.value)}/>
+					<div>
+						<button type="submit">entrar</button>
 						<Link to="/signup">
-							<ButtonSign as="div">Não tem uma conta? Clique aqui!</ButtonSign>
+							<button as="div">Não tem uma conta? Clique aqui!</button>
 						</Link>
 						
-					</Container1>
-					<Alert>{error}</Alert>
-				</Form>
-			</ColumnCenter>
-		</Body>		
+					</div>
+					<div>{error}</div>
+				</form>	
 	</>)
 }
 

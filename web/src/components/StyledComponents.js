@@ -1,52 +1,114 @@
 import styled from 'styled-components'
 
-//Structure
+/////////////////////////////////
+export const Nav = styled.nav`
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    height: 100vh;
+    padding: 20px;
+    @media (max-width: 860px) {
+        height: auto;
+        overflow-y: hidden;
+        width: auto;
+        background-color: pink;
+        padding: 20px 20px 0 20px;
+    }
+`;
+export const NavResponsive = styled.div`
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    @media (max-width: 860px) {
+        margin-bottom: 20px;
+    }
+`;
+
+export const NavItem = styled.div`
+    width: auto;
+    height: 0;
+    overflow-y: hidden;
+    @media (max-width: 860px) {
+        width: auto;
+        height: 0;
+        overflow-y: hidden;
+    }
+`;
+export const NavLink = styled.div`
+    padding: 20px;
+    background: red;
+    margin-bottom: 20px;
+    span{
+        display: none;
+        @media (max-width: 860px){
+            display: block;
+        }  
+    }
+    @media (max-width: 860px) {
+        width: auto;
+    }
+`;
+export const Logo = styled.div`
+    padding: 20px;
+    background: green;
+`;
+export const Logout = styled.button`
+    display: none;
+    span {
+        display: none;
+        @media (max-width: 860px) {
+            display: block;
+        }
+    }
+    @media (max-width: 860px) {
+        display: block;
+        margin-bottom: 20px;
+    }
+`;
+export const Main = styled.main`
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 20px 40px;
+    background: green;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    @media (max-width: 860px) {
+        padding: 20px !important;
+    }
+`;
 export const Row = styled.div`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    @media (max-width: 860px) {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-sizing: content-box;
-                box-sizing: content-box;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
-    }
-`;
-
-export const RowNmf = styled(Row)`
-    background-color: #f6f6f6;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-`;
-export const RowEnd = styled(Row)`
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    padding: 0px !important;
-`;
-export const RowToColumn = styled.div`
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: ${props => props.wrap || 'nowrap'};
+        flex-wrap: ${props => props.wrap || 'nowrap'};
+    padding: ${props => props.padding || '20px'};
+    margin: ${props => props.margin || 'auto'};
+    background: pink;
     @media (max-width: 860px) {
         -webkit-box-orient: vertical !important;
         -webkit-box-direction: normal !important;
@@ -54,279 +116,69 @@ export const RowToColumn = styled.div`
         flex-direction: column !important;
     }
 `;
-export const RowToColumnWrap = styled(RowToColumn)`
-    flex-wrap: wrap;
-`;
-export const BodyRow = styled(RowToColumn)`
-    background: #f6f6f6;
-    min-height: 100vh;
-    font-family: Segoe UI !important;
-`;
 export const Column = styled.div`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: ${props => props.padding || '20px'};
+    margin: ${props => props.margin || 'auto'};
+    background: magenta;
 `;
-export const ColumnNmf = styled(Column)`
-    background-color: #f6f6f6;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;   
-`;
-export const ColumnCenter =  styled(Column)`
-    justify-content: center;
-    min-height: 100vh;
-    padding: 0;
-`;
-export const Form = styled(Column)`
-    max-width: 50vw;
-    min-width: 300px;
-    margin: 0 auto;
-`;
-export const Body = styled(Column)`
-    background-color: #f6f6f6;
-    min-height: 100vh;
-    font-family: Segoe UI !important;
-    padding: 0px;
-`;
-export const Container1 = styled.div`
-    padding: 20px 20px 0;
-    width: 100%;
-`;
-export const Container2 = styled.div`
-    width: 50%;
-    padding: 20px 20px 0;
-    @media (max-width: 860px){
-        width: 100% !important;
-    }
-`;
-export const Grow1 = styled.div`
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    padding-left: 20px;
-`;
-
 export const Box = styled.div`
-    padding: 20px;
-    background-color: #f6f6f6;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;  
+    background-color: #fcfcfc;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: ${props => props.grow || '1'};
+    padding: ${props => props.padding || '20px'};
+    margin: ${props => props.margin || '10px'};
 `;
-export const NavHeader = styled.div`
-    display: none;
+export const CustomBox = styled.div`
+    padding: ${props => props.padding || '20px'};
+    margin: ${props => props.margin || '10px'};
+    width: ${props => `calc(${props.width} - ${props.margin})`}
+`;
+export const BoxEnd = styled(Box)`
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    margin: 20px;
-    @media (max-width: 860px) {
-        display: -webkit-box !important;
-        display: -ms-flexbox !important;
-        display: flex !important;
-    }
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
 `;
-
-export const NavItem = styled.div`
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    margin-bottom: 20px;
-    background-color: #f6f6f6;
-    color: #333;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-   -4px -4px 9px #ffffff;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-   -4px -4px 9px #ffffff;
-    @media (max-width: 860px) {
-        display: block;
-        -webkit-box-sizing: content-box;
-        box-sizing: content-box;
-        height: 60px !important;
-        width: 100% !important;
-        border-radius: 10px !important;
-    }
+//BUTTON
+export const ButtonNmf = styled.button`
+    height: 40px;
+    width: 40px;
+    background: black;
 `;
-export const ItemMessage = styled(NavItem)`
-    background: url("/img/message.svg") no-repeat center;
-    @media (max-width: 860px){
-        background-position: 20px center !important;
-    }
+export const ButtonAction = styled.button`
+    padding: 20px;
+    max-width: 150px;
+    background: orange;
+    height: 60px;  
 `;
-export const ItemContact = styled(NavItem)`
-    background: url("/img/contact.svg") no-repeat center;
-    @media (max-width: 860px){
-        background-position: 20px center !important;
-    }
-`;
-export const Item = styled.span`
-    display: none;
-    @media (max-width: 860px) {
-        padding: 20px 0 20px 60px;
-        display: block !important;
-    }
-`;
-export const Main = styled.main`
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-`;
-//Buttons, Inputs and Icons
-
-export const SearchBox = styled.form`
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: #f6f6f6;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-   -4px -4px 9px #ffffff;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-   -4px -4px 9px #ffffff;
-`;
-export const InputText = styled.input`
-    font-size: 12pt;
-    padding: 0 20px;
-    height: 50px;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    border: 0;
-    background: transparent;   
-`;
-export const InputTextNmf = styled(InputText)`
-    border-radius: 20px;
-    background-color: #f6f6f6;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    flex-grow: 0;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    margin-bottom: 20px;
-`;
-export const Button = styled.button`
-    height: 50px;
-    width: 50px;
-    border: 0;
-`;
-export const ButtonReset = styled(Button)`
-    background: transparent url("/img/delete.svg") center no-repeat;
-`;
-export const ButtonSearch = styled(Button)`
-    background: transparent url("/img/search.svg") center no-repeat;   
-`;
-export const ButtonAction = styled(Button)`
-    border-radius: 100%;
-    background-color: #f6f6f6;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    margin-left: 20px;
-`;
-export const ButtonSign = styled.button`
-    border-radius: 20px;
-    margin-bottom: 20px;
-    background-color: #f6f6f6;
-    width: 100%;
-    border: 0;
-    padding: 15px;
-    text-align: center;
-    color: #333;
-    font-size: 1em;
-`;
-export const ButtonSignNmf = styled(ButtonSign)`
-    background-color: #f6f6f6;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-`;
-export const ButtonBurger = styled(Button)`
-    -ms-flex-item-align: end;
-    align-self: flex-end;
-    background: transparent url("/img/burger.svg") center no-repeat;
-    background-size: 30px;
-    border: 0;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    margin-left: 20px;
-`;
-export const Icon = styled.div`
-    height: 50px;
-    width: 50px;
-    border-radius: 10px;
-`;
-export const IconNmf = styled(Icon)`
-    background-color: #f6f6f6;
-    -webkit-box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-    box-shadow: 4px 4px 9px #d9d9d9, 
-    -4px -4px 9px #ffffff;
-`;
-
-//Titles and Texts
-
-export const Title1 = styled.h1`
-    font-size: 2em;
-    margin-top: -12px;
-    margin-bottom: 20px;
-`;
-export const Title2 = styled.h2`
-    font-size: 1.6em;
-    font-weight: 400;
-    color: #a9a9a9;
-`;
-export const Title3 = styled.h3`
-    font-size: 1.2em;
-    font-weight: 600;
-`;
-export const Text = styled.p`
-    font-size: 1em;
-    font-weigth: 300;
-`;
-export const HiddenText = styled.div`
-    grow: 1;
-    background: #e6e6e6;
-    border-radius: 10px;
-    height: 30px;
-    margin: 10px 0;
-`;
-
-//More
-
-export const ResponsiveLogo = styled.div`
-    height: 45px;
-    width: 45px;
-    background: url("/img/logo-icon.svg") no-repeat center;
-    background-size: 100%;
-`;
-export const FullLogo = styled.div`
-    @media (max-width: 860px) {
+export const Burger = styled.button`
+    padding: 20px;
+    background: green;
+    @media (min-width: 861px) {
         display: none;
     }
+`;
+//MORE
+export const Avatar = styled.div`
+    min-height: 100px;
+    min-width: 100px;
+    max-height: 250px;
+    max-width: 250px;
+    height: 20vw;
+    width: 20vw;
+    background-color: red;
 `;

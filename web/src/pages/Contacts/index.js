@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Nav from '../../components/Nav'
-import Header from '../../components/Header'
-import Title from '../../components/Title'
+
 import { BodyRow, Main, RowEnd, Container1, ButtonAction, Column, RowNmf } from '../../components/StyledComponents'
 
 function Contacts(){
@@ -26,30 +24,17 @@ function Contacts(){
             
     }, [])
 
-    return (
-        <BodyRow>
-            <Nav />
-            <Main>
-                <Header />
-                <Title title1="Meus" title2="Contatos" />             
-                      
-                <Column>
-                    {customers.map(customer => (
-                        <RowNmf key={customer._id}>
-                            <p>{customer.name}</p>
-                            <p>{customer.whatsapp}</p>
-                        </RowNmf>
-                    ))}
-                </Column>
-                <Column>
-                    <RowEnd>
-                        <ButtonAction as="a" href={contacts} download={filename} onClick={() => {window.open('https://contacts.google.com/')}}>^</ButtonAction>     
-                    </RowEnd>
-                </Column>
-            </Main>
-            
-        </BodyRow>
-    )
+    return (<>
+        {customers.map(customer => (
+            <div key={customer._id}>
+                <p>{customer.name}</p>
+                <p>{customer.whatsapp}</p>
+            </div>
+        ))}
+
+            <button as="a" href={contacts} download={filename} onClick={() => {window.open('https://contacts.google.com/')}}>^</button>     
+
+    </>)
 }
 
 export default Contacts

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import Nav from '../../components/Nav'
-import Header from '../../components/Header'
-import Title from '../../components/Title'
 
 import { BodyRow, Main, Container2, Row, IconNmf, Grow1, Box, Title3, Text, RowEnd, ButtonAction, RowToColumnWrap, HiddenText } from '../../components/StyledComponents'
 
@@ -35,40 +32,35 @@ function Panel() {
 
 	return (
 
-    <BodyRow>
-        <Nav />
-        <Main>
-            <Header />
-            <Title title1="Minhas" title2="Mensagens"/>
-            <RowToColumnWrap>
+        <div>
+            <h1 title1="Minhas" title2="Mensagens"/>
+            <div>
               {messages.map(message => (
-                <Container2 key={message._id}>
-                  <Box>
-                    <Row>
+                <div key={message._id}>
+                  <div>
+                    <div>
                       <div>
-                        <IconNmf></IconNmf>
+                        <div></div>
                       </div>
-                      <Grow1>
-                        <Title3>{message.customer.name}</Title3>
-                        {license ? <Text>{message.message}</Text> : <HiddenText />}
-                        <RowEnd>
-                          <ButtonAction onClick={() => {handleDestroy(message._id)}}>x</ButtonAction>
+                      <div>
+                        <h3>{message.customer.name}</h3>
+                        {license ? <div>{message.message}</div> : <div>Comprar licença</div>}
+                        <div>
+                          <button onClick={() => {handleDestroy(message._id)}}>x</button>
                           {license ? 
-                            <ButtonAction as="a" target="_blank" href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`}>></ButtonAction>
+                            <button as="a" target="_blank" href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`}>></button>
                             :
-                            <Link to="/signature"><ButtonAction target="_blank">></ButtonAction></Link>
+                            <Link to="/signature"><button target="_blank">></button></Link>
                           }
-                        </RowEnd>
-                      </Grow1>
-                    </Row>  
-                  </Box>
+                        </div>
+                      </div>
+                    </div>  
+                  </div>
                   
-                </Container2>
+                </div>
               ))}
-            </RowToColumnWrap>
-        </Main>    
-    </BodyRow>
-
+            </div>
+        </div>    
 
   )
 }

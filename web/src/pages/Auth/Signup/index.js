@@ -53,29 +53,25 @@ function Signup() {
 	}
 
 	return (<>
-		<Body>
-			<ColumnCenter>
-				<Form as="form" onSubmit={handleSignin}>
-					<Title1>Criar conta</Title1>
-					<InputTextNmf name="username" placeholder="username" onChange={e => setUsername(e.target.value)} />
-					<InputTextNmf name="whatsapp" placeholder="whatsapp" onChange={e => setWhatsapp(e.target.value)} />
-					<InputTextNmf type="email" name="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
-					<InputTextNmf type="password" name="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
-					<Container1>
-						<ButtonSignNmf type="submit" >Cadastrar</ButtonSignNmf>
-						<Link to="/signin">
-							<ButtonSign as="div">Já tem uma conta? Entre aqui!</ButtonSign>
-						</Link>
-					</Container1>
-				</Form>
-			</ColumnCenter>
-		</Body>
-		
-		<Alert>
+
+		<form as="form" onSubmit={handleSignin}>
+			<h2>Criar conta</h2>
+			<input name="username" placeholder="username" onChange={e => setUsername(e.target.value)} />
+			<input name="whatsapp" placeholder="whatsapp" onChange={e => setWhatsapp(e.target.value)} />
+			<input type="email" name="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
+			<input type="password" name="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
+			<div>
+				<button type="submit" >Cadastrar</button>
+				<Link to="/signin">
+					<button as="div">Já tem uma conta? Entre aqui!</button>
+				</Link>
+			</div>
+		</form>
+		<div>
 			{errors.map(error => (
 				<div key={Math.random()}>{error}</div>
 			))}
-		</Alert>
+		</div>
 		
 	</>)
 }
