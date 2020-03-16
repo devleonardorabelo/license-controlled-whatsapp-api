@@ -16,12 +16,15 @@
 ### Dependencies
 For install all dependencies, use this command:
 
-# CLIENT
+#### CLIENT
 
     cd web -> yarn install -> yarn start
     
-# SERVER
+#### SERVER
 
     cd backend -> yarn install -> (nodemon**) 
     
-    
+#### STRIPE
+
+    To set up subscriptions plans:
+    https://stripe.com/docs/billing/subscriptions/set-up-subscription#without-code
