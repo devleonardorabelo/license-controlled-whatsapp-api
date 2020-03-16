@@ -1,9 +1,27 @@
-# whatsapp-api
-Um sistema de envio de mensagens controlado por licença
+<h1 align="center">(EN-US)SUBSCRIPTION SYSTEM FOR WHATSAPP API</h1>
+<h2 align="center">ReactJS, NodeJS, Stripe</h2>
+<hr>
 
-# FRONT END
-## cd web -> yarn install -> yarn start
+> NOTE: The Project is still in BETA, but already functional. The code changes daily for updates depending on my availability.
 
-# BACK END
-## cd backend -> yarn install -> (nodemon)
+## The system has the following characteristics:
+<ul>
+  <li>User Control Panel</li>
+  <li>Subscription System for Users</li>
+  <li>Script for each user</li>
+</ul>
 
+## Installation
+
+### Dependencies
+For install all dependencies, use this command:
+
+# CLIENT
+
+    cd web -> yarn install -> yarn start
+    
+# SERVER
+
+    cd backend -> yarn install -> (nodemon**) 
+    
+    
