@@ -36,6 +36,7 @@ module.exports = {
         }
         let user = await User.findOne({_id: currentUser.id})
         let license = user.active
+        console.log(status)
         return res.send({message, status, license})
         
         

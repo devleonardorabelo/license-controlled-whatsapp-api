@@ -2,7 +2,26 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-import { BodyRow, Main, Container2, Row, IconNmf, Grow1, Box, Title3, Text, RowEnd, ButtonAction, RowToColumnWrap, HiddenText } from '../../components/StyledComponents'
+import {
+  Row,
+  Nav,
+  Container,
+  NavResponsive,
+  Logo,
+  Burger,
+  NavItem,
+  NavLink,
+  Logout,
+  Main,
+  Box,
+  ButtonNmf,
+  H2,
+  H3,
+  P,
+  Column,
+  Avatar,
+  ButtonAction
+} from '../../components/StyledComponents'
 
 function Panel() {
 
@@ -18,7 +37,7 @@ function Panel() {
       setMessages(response.data.message)
       setStatus(response.data.status)
       setLicense(response.data.license)
-
+      
     }
     
     loadMessages() 
@@ -31,37 +50,57 @@ function Panel() {
   }
 
 	return (
+    <Row>
+      <Nav>
+        <NavResponsive>
+          <Logo />
+          <Burger />
+        </NavResponsive>
+        <NavItem>
+          <Link to='/panel'><NavLink><span>Home</span></NavLink></Link>
+          <Link to='/contacts'><NavLink><span>Perfil</span></NavLink></Link>
+          <Link to='/panel'><NavLink><span>Contatos</span></NavLink></Link>
+        </NavItem>
+        <Logout><span>sair</span></Logout>
+      </Nav>
+      <Main>
+        <Column>
+          <Container padding={'0 10px'}>
+            <Link to='/panel'><ButtonNmf /></Link>
+          </Container>
+          <Container padding={'40px 10px'}>
+            <Row>
+              <Avatar></Avatar>
+              <Column padding={'0 20px'}>
+                <H2 margin={'0 0 20px 0'}>Nome da Empresa</H2>
+                <ButtonAction>Meu Perfil</ButtonAction>
+              </Column>
+            </Row>
+          </Container>
+          <Container padding={'0 10px'}>
+            <H2>Mensagens</H2>
+          </Container>
+          <Container>
+            {messages.map(message => (
+              <Box key={message._id}>
+                <H3>{message.customer.name}</H3>
+                {license ? <P>{message.message}</P> : <P>Comprar licença</P>}
+                {license ? 
+                  <ButtonNmf as="a" target="_blank" href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`}>></ButtonNmf>
+                  :
+                  <Link to="/signature"><ButtonNmf target="_blank">></ButtonNmf></Link>
+                }
+              </Box>
+            ))}
+          </Container>
+        </Column>
+      </Main>
+    </Row>
 
-        <div>
-            <h1 title1="Minhas" title2="Mensagens"/>
-            <div>
-              {messages.map(message => (
-                <div key={message._id}>
-                  <div>
-                    <div>
-                      <div>
-                        <div></div>
-                      </div>
-                      <div>
-                        <h3>{message.customer.name}</h3>
-                        {license ? <div>{message.message}</div> : <div>Comprar licença</div>}
-                        <div>
-                          <button onClick={() => {handleDestroy(message._id)}}>x</button>
-                          {license ? 
-                            <button as="a" target="_blank" href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`}>></button>
-                            :
-                            <Link to="/signature"><button target="_blank">></button></Link>
-                          }
-                        </div>
-                      </div>
-                    </div>  
-                  </div>
-                  
-                </div>
-              ))}
-            </div>
-        </div>    
 
+
+
+        
   )
 }
 
