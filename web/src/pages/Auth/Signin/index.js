@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
-import { } from '../../../components/StyledComponents'
+import {
+	Main,
+	H2,
+	Column,
+	Container,
+	ButtonAction,
+	Input,
+	LinkAction
+} from '../../../components/StyledComponents'
 import styled from 'styled-components'
 
 import axios from 'axios'
@@ -48,22 +56,26 @@ function Signin() {
 
 	}
 
-	return (<>
-
-				<form as="form" onSubmit={handleSignin}>
-					<h2>Entrar</h2>
-					<input name="username" placeholder="usuário" onChange={e => setUsername(e.target.value)}/>
-					<input name="password" type="password" placeholder="senha" onChange={e => setPassword(e.target.value)}/>
-					<div>
-						<button type="submit">entrar</button>
+	return (
+	
+		<Main height={'100vh'}>
+			<Column margin={'auto'}>
+				<Container width={'300px'}>
+					<Column as="form" onSubmit={handleSignin}>
+						<H2 margin={'0 0 20px 0'}>Entrar</H2>
+						<Input name="username" placeholder="usuário" onChange={e => setUsername(e.target.value)}/>
+						<Input name="password" type="password" placeholder="senha" onChange={e => setPassword(e.target.value)}/>
+						<ButtonAction type="submit" width={'100%'}>entrar</ButtonAction>
 						<Link to="/signup">
-							<button as="div">Não tem uma conta? Clique aqui!</button>
+							<LinkAction>Não tem uma conta? Clique aqui!</LinkAction>
 						</Link>
-						
-					</div>
-					<div>{error}</div>
-				</form>	
-	</>)
+						<Alert>{error}</Alert>
+					</Column>
+				</Container>
+			</Column>	
+		</Main>
+
+	)
 }
 
 export default Signin

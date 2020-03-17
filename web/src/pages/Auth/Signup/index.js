@@ -2,13 +2,23 @@ import React, { useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import axios from 'axios'
 
-import { Form, Title1, Body, InputTextNmf, ButtonSignNmf, ButtonSign, ColumnCenter, Container1} from '../../../components/StyledComponents'
+import {
+	Main,
+	H2,
+	Column,
+	Container,
+	ButtonAction,
+	Input,
+	LinkAction
+} from '../../../components/StyledComponents'
+
 import styled from 'styled-components'
 
 function Signup() {
 	
     const [username, setUsername]= useState('')
-    const [whatsapp, setWhatsapp]= useState('')
+	const [whatsapp, setWhatsapp]= useState('')
+	const [company, setCompany]= useState('')
     const [email, setEmail]= useState('')
 	const [password, setPassword]= useState('')
 	const [isError, setIsError]= useState(false)
@@ -52,28 +62,33 @@ function Signup() {
 
 	}
 
-	return (<>
+	return (
 
-		<form as="form" onSubmit={handleSignin}>
-			<h2>Criar conta</h2>
-			<input name="username" placeholder="username" onChange={e => setUsername(e.target.value)} />
-			<input name="whatsapp" placeholder="whatsapp" onChange={e => setWhatsapp(e.target.value)} />
-			<input type="email" name="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
-			<input type="password" name="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
-			<div>
-				<button type="submit" >Cadastrar</button>
-				<Link to="/signin">
-					<button as="div">Já tem uma conta? Entre aqui!</button>
-				</Link>
-			</div>
-		</form>
-		<div>
-			{errors.map(error => (
-				<div key={Math.random()}>{error}</div>
-			))}
-		</div>
+		<Main height={'100vh'}>
+			<Column margin={'auto'}>
+				<Container width={'300px'}>
+					<Column as="form" onSubmit={handleSignin}>
+						<H2 margin={'0 0 20px 0'}>Criar uma conta</H2>
+						<Input name="username" placeholder="username" onChange={e => setUsername(e.target.value)} />
+						<Input name="company" placeholder="Nome da Empresa" onChange={e => setCompany(e.target.value)} />
+						<Input name="whatsapp" placeholder="whatsapp" onChange={e => setWhatsapp(e.target.value)} />
+						<Input type="email" name="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
+						<Input type="password" name="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
+						<ButtonAction type="submit" width={'100%'}>entrar</ButtonAction>
+						<Link to="/signin">
+							<LinkAction>Já tem uma conta? Entre aqui!</LinkAction>
+						</Link>
+						<Alert>
+							{errors.map(error => (
+								<div key={Math.random()}>{error}</div>
+							))}
+						</Alert>
+					</Column>
+				</Container>
+			</Column>	
+		</Main>
 		
-	</>)
+	)
 }
 
 export default Signup

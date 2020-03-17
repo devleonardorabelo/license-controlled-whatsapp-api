@@ -84,6 +84,7 @@ export const Main = styled.main`
     display: -ms-flexbox;
     display: flex;
     padding: 20px 40px;
+    height: ${props => props.height || 'auto'};
     background: green;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
@@ -164,8 +165,9 @@ export const ButtonAction = styled.button`
     padding: 15px;
     font-size: 1em;
     border: 0;
-    max-width: 150px;
-    background: orange;
+    width: ${props => props.width || 'auto'};
+    margin-bottom: 20px;
+    background: red;
 `;
 export const Burger = styled.button`
     padding: 20px;
@@ -174,6 +176,20 @@ export const Burger = styled.button`
     @media (min-width: 861px) {
         display: none;
     }
+`;
+export const Input = styled.input`
+    padding: 15px;
+    font-size: 1em;
+    width: 100%;
+    margin-bottom: 20px;
+`;
+export const LinkAction = styled.a`
+    display: block;
+    padding: 15px;
+    font-size: 1em;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
 `;
 //TYPOGRAPHY
 export const H1 = styled.h1`

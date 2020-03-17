@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 
 export const isAuthenticated = () => {
 
-	const token = localStorage.getItem('usertoken')
+  const token = localStorage.getItem('usertoken')
   let secret = process.env.REACT_APP_SECRET
 	let logged = false
 

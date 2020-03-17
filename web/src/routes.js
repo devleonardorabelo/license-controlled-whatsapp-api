@@ -8,7 +8,8 @@ const Signin = lazy(() => import('./pages/Auth/Signin/'));
 const Signup = lazy(() => import('./pages/Auth/Signup/'));
 const Panel = lazy(() => import('./pages/Panel/'));
 const Contacts = lazy(() => import('./pages/Contacts/'));
-const Signature = lazy(() => import('./pages/Signature/'));
+const Profile = lazy(() => import('./pages/Profile/'));
+const Subscription = lazy(() => import('./pages/Subscription/'));
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route { ...rest } render={props => (
@@ -20,7 +21,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
-
 const Routes = () => (
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
@@ -30,7 +30,8 @@ const Routes = () => (
           <Route path="/signup" component={Signup}/>
           <PrivateRoute path="/panel" component={Panel}/>
           <PrivateRoute path="/contacts" component={Contacts}/>
-          <PrivateRoute path="/signature" component={Signature}/>
+          <PrivateRoute path="/profile" component={Profile}/>
+          <PrivateRoute path="/subscription" component={Subscription}/>
         </Switch>
       </Suspense>
     </Router>

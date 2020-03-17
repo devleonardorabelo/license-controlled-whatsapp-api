@@ -60,7 +60,7 @@ const CheckoutForm = () => {
 
 const stripePromise = loadStripe('pk_test_pPOC14ljvMHYJOODJ7mOXtJe00Pter1jsE');
 
-const Signature = () => {
+const Subscription = () => {
 
   return (
     <Elements stripe={stripePromise} >
@@ -69,4 +69,4 @@ const Signature = () => {
   );
 };
 
-export default Signature;
+export default Subscription;

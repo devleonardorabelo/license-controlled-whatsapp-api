@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+import NavPanel from '../../components/NavPanel'
+
 import {
   Row,
-  Nav,
   Container,
-  NavResponsive,
-  Logo,
-  Burger,
-  NavItem,
-  NavLink,
-  Logout,
   Main,
   Box,
   ButtonNmf,
@@ -27,7 +22,7 @@ function Panel() {
 
   const [messages, setMessages] = useState([])
   const [status, setStatus] = useState([])  
-  const [license, setLicense] = useState()
+  const [user, setUser] = useState([])
 
   useEffect(() => {
 
@@ -36,7 +31,7 @@ function Panel() {
       const response = await axios.get(`${process.env.REACT_APP_BACK_DOMAIN}/panel`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
       setMessages(response.data.message)
       setStatus(response.data.status)
-      setLicense(response.data.license)
+      setUser(response.data.user)
       
     }
     
@@ -51,18 +46,7 @@ function Panel() {
 
 	return (
     <Row>
-      <Nav>
-        <NavResponsive>
-          <Logo />
-          <Burger />
-        </NavResponsive>
-        <NavItem>
-          <Link to='/panel'><NavLink><span>Home</span></NavLink></Link>
-          <Link to='/contacts'><NavLink><span>Perfil</span></NavLink></Link>
-          <Link to='/panel'><NavLink><span>Contatos</span></NavLink></Link>
-        </NavItem>
-        <Logout><span>sair</span></Logout>
-      </Nav>
+      <NavPanel />
       <Main>
         <Column>
           <Container padding={'0 10px'}>
@@ -72,7 +56,7 @@ function Panel() {
             <Row>
               <Avatar></Avatar>
               <Column padding={'0 20px'}>
-                <H2 margin={'0 0 20px 0'}>Nome da Empresa</H2>
+                <H2 margin={'0 0 20px 0'}>{user.company}</H2>
                 <ButtonAction>Meu Perfil</ButtonAction>
               </Column>
             </Row>
@@ -84,11 +68,11 @@ function Panel() {
             {messages.map(message => (
               <Box key={message._id}>
                 <H3>{message.customer.name}</H3>
-                {license ? <P>{message.message}</P> : <P>Comprar licença</P>}
-                {license ? 
+                {user.active ? <P>{message.message}</P> : <P>Comprar licença</P>}
+                {user.active ? 
                   <ButtonNmf as="a" target="_blank" href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`}>></ButtonNmf>
                   :
-                  <Link to="/signature"><ButtonNmf target="_blank">></ButtonNmf></Link>
+                  <Link to="/subcription"><ButtonNmf target="_blank">></ButtonNmf></Link>
                 }
               </Box>
             ))}

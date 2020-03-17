@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+import NavPanel from '../../components/NavPanel'
+
 import {
     Row,
-    Nav,
     Container,
-    NavResponsive,
-    Logo,
-    Burger,
-    NavItem,
-    NavLink,
-    Logout,
     Main,
     Box,
     ButtonNmf,
@@ -43,18 +38,7 @@ function Contacts(){
 
     return (
         <Row padding={'0px'}>
-            <Nav>
-            <NavResponsive>
-                <Logo />
-                <Burger />
-            </NavResponsive>
-            <NavItem>
-                <Link to='/panel'><NavLink><span>Painel</span></NavLink></Link>
-                <Link to='/contacts'><NavLink><span>Contatos</span></NavLink></Link>
-                <Link to='/panel'><NavLink><span>Contatos</span></NavLink></Link>
-            </NavItem>
-            <Logout><span>sair</span></Logout>
-            </Nav>
+            <NavPanel />
             <Main>
                 <Container padding={'0 0 40px 10px'}>
                     <Link to='/panel'><ButtonNmf /></Link>

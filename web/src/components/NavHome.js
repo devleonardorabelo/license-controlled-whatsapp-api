@@ -14,11 +14,11 @@ function NavHome() {
 			<img src="/img/logo.png" alt="GerenciaZap" title="GerenciaZap" className="logo" />
 			<ul className={`${isActive ? 'active' : ''}`}>
 				<li><a href="#functionalities">Funcionalidades</a></li>
-				<li><a href="#signature">Assinatura</a></li>
+				<li><a href="#subscription">Assinatura</a></li>
 				<li><a href="#how-to">Integração</a></li>
 				<li><a href="#support">Suporte</a></li>
 				<li><a href="/signin">Login</a></li>
-				<li><a href="/signature" className="btn-testar">Ganhe R$15,90 para Testar</a></li>
+				<li><a href="/subscription" className="btn-testar">Ganhe R$15,90 para Testar</a></li>
 			</ul>
 		</nav>
 	)
