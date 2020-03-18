@@ -7,21 +7,30 @@ module.exports = {
         return res.send(data)
     },
     async update(req, res) {
-        console.log('tentando')
-        let { company, email, whatsapp } = req.body
+
+        let { company, whatsapp } = req.body
+        const alert = []
+
+        let haveWhatsapp = await User.findOne({whatsapp})
+
+        if(haveWhatsapp) alert.push('Esse whatsapp já está sendo usado')
+        if(!company || company.length <= 4) alert.push('Nome da Empresa inválido')
+        if(!whatsapp || whatsapp.length < 13) alert.push('Email incompleto ou inválido')
+
+        if(alert.length > 0) return res.send({alert})
         
         try{
 
             await User.updateOne({_id: currentUser.id},{
                 company,
                 whatsapp,
-                email
             })
 
-            return res.send({status: 'Alteração salva com sucesso'})
+            alert.push('Alteração salva com sucesso')
+            return res.send({alert})
 
         } catch (err) {
-            return res.status(401).send({error: 'Houve um erro, tente novamente'})
+            return res.status(401).send({alert: 'Houve um erro, tente novamente'})
         }
         
     }

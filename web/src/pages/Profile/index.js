@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useInput } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
+import styled from 'styled-components'
 import NavPanel from '../../components/NavPanel'
 
 import {
@@ -30,24 +30,47 @@ function Profile(){
     const [ data, setData] = useState([])
     const [ company, setCompany ] = useState('')
     const [ whatsapp, setWhatsapp ] = useState('')
-    const [ email, setEmail ] = useState('')
     const [ currentPwd, setCurrentPwd ] = useState('')
     const [ newPwd, setNewPwd ] = useState('')
     const [ confirmNewPwd, setConfirmNewPwd ] = useState('')
-    
+    const [ status, setStatus ] = useState(false)
+    const [ alerts, setAlerts ] = useState([])
+
+    const Alert = styled.div`
+      display: ${status ? "block" : "none"};
+      position: absolute;
+      padding: 10px 20px;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 10px;
+      background: red;
+      right: 10px;
+      top: 10px;
+    `;
 
     useEffect(() => {
 
-        async function loadData(){
+      async function loadData(){
 
-            const response = await axios.get(`${process.env.REACT_APP_BACK_DOMAIN}/panel/profile`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
-            setData(response.data)
+          const response = await fetch(`${process.env.REACT_APP_BACK_DOMAIN}/panel/profile`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('usertoken')}`
+            },
+            mode: 'cors',
+          })
 
-        }
+          let data = await response.json()
 
-        loadData()
-        
-            
+          setData(data)
+          setCompany(data.company)
+          setWhatsapp(data.whatsapp)
+
+      }
+
+      loadData()
+          
     }, [])
 
     async function handleUpdateData(e) {
@@ -60,15 +83,20 @@ function Profile(){
           Authorization: `Bearer ${localStorage.getItem('usertoken')}`
         },
         mode: 'cors',
-        body: JSON.stringify({company, whatsapp, email})
+        body: JSON.stringify({company, whatsapp})
       })
       
       let data = await response.json()
 
-      console.log(data)
-      
+      if(data.alert){
+        setStatus(true)
+        setAlerts(data.alert)
+        return setTimeout(() => {
+          setStatus(false)
+          setAlerts([])
+        }, 3000)
+      }
 
-      
 
     }
 
@@ -87,14 +115,13 @@ function Profile(){
             <Container padding={'40px 10px'}>
               <Column>
                 <Avatar></Avatar>
-                <Column as='form' onSubmit={handleUpdateData}>
+                <Column as='form' onSubmit={handleUpdateData} >   
                   <H5>Meus dados</H5>
                   <Row>
                     <Input placeholder='Nome da Empresa' onChange={e => setCompany(e.target.value)} defaultValue={data.company}/>
                   </Row>
                   <Row>
                     <Input placeholder='whatsapp' onChange={e => setWhatsapp(e.target.value)} defaultValue={data.whatsapp}/>
-                    <Input placeholder='email' onChange={e => setEmail(e.target.value)} defaultValue={data.email}/>
                   </Row>
                   <Row>
                     <ButtonAction type='submit'>Atualizar dados</ButtonAction>
@@ -116,6 +143,11 @@ function Profile(){
                 </Column>
               </Column>
             </Container>
+            <Alert>
+              {alerts.map(eachAlert => (
+                <div key={Math.random()}>{eachAlert}</div>
+              ))}
+            </Alert>
           </Column>
         </Main>
       </Row>
