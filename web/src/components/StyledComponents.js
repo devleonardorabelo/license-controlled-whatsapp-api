@@ -5,6 +5,9 @@ export const Nav = styled.nav`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -14,11 +17,12 @@ export const Nav = styled.nav`
             justify-content: space-between;
     height: 100vh;
     padding: 20px;
+    background-color: pink;
     @media (max-width: 860px) {
+        position: static;
         height: auto;
         overflow-y: hidden;
         width: auto;
-        background-color: pink;
         padding: 20px 20px 0 20px;
     }
 `;
@@ -42,11 +46,12 @@ export const NavItem = styled.div`
     overflow-y: hidden;
     @media (max-width: 860px) {
         width: auto;
-        height: 0;
+        height: ${props => props.isActive ? 'auto' : '0'};
         overflow-y: hidden;
     }
 `;
 export const NavLink = styled.div`
+    display: block;
     padding: 20px;
     background: red;
     margin-bottom: 20px;
@@ -64,7 +69,8 @@ export const Logo = styled.div`
     padding: 20px;
     background: green;
 `;
-export const Logout = styled.button`
+export const Logout = styled.div`
+    display: block;
     padding: 20px;
     background: green;
     border:0;
@@ -74,16 +80,20 @@ export const Logout = styled.button`
             display: block;
         }
     }
+    @media (min-width: 860px) {
+        display: ${props => props.noResponsive ? 'block' : 'none'};
+    }
     @media (max-width: 860px) {
-        display: block;
+        display: ${props => props.isResponsive ? 'block' : 'none'};
         margin-bottom: 20px;
     }
 `;
+
 export const Main = styled.main`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding: 20px 40px;
+    padding: 20px 40px 0 100px;
     height: ${props => props.height || 'auto'};
     background: green;
     -webkit-box-flex: 1;
@@ -155,7 +165,7 @@ export const CustomBox = styled.div`
     width: ${props => `calc(${props.width} - ${props.margin})`}
 `;
 //BUTTON
-export const ButtonNmf = styled.a`
+export const ButtonNmf = styled.div`
     display: block;
     height: 40px;
     width: 40px;
@@ -183,7 +193,7 @@ export const Input = styled.input`
     width: 100%;
     margin-bottom: 20px;
 `;
-export const LinkAction = styled.a`
+export const LinkAction = styled.div`
     display: block;
     padding: 15px;
     font-size: 1em;
@@ -214,11 +224,7 @@ export const P = styled.p`
 `;
 //MORE
 export const Avatar = styled.div`
-    min-height: 100px;
-    min-width: 100px;
-    max-height: 250px;
-    max-width: 250px;
-    height: 20vw;
-    width: 20vw;
+    height: 150px;
+    width: 150px;
     background-color: red;
 `;

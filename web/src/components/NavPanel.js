@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {
     Nav,
@@ -11,18 +11,23 @@ import {
 } from './StyledComponents'
 
 function NavPanel() {
+    const [isActive, setIsActive] = useState(false)
+    const activeMenu = () => {
+        setIsActive(!isActive)
+    }
     return(
     <Nav>
         <NavResponsive>
             <Logo />
-            <Burger />
+            <Burger onClick={ () => { activeMenu() } }/>
         </NavResponsive>
-        <NavItem>
+        <NavItem isActive={isActive}>
             <Link to='/panel'><NavLink><span>Home</span></NavLink></Link>
             <Link to='/profile'><NavLink><span>Perfil</span></NavLink></Link>
             <Link to='/contacts'><NavLink><span>Contatos</span></NavLink></Link>
+            <Logout isResponsive><span>sair</span></Logout>
         </NavItem>
-        <Logout><span>sair</span></Logout>
+        <Logout noResponsive><span>sair</span></Logout>
     </Nav>
     )
 }
