@@ -34,9 +34,9 @@ module.exports = {
             if(eachDate[2] == currentMonth) status.month++
 
         }
-        let { username, active } = await User.findOne({_id: currentUser.id})
-        let user = { username, active }
-        
+        let { username, active, company } = await User.findOne({_id: currentUser.id})
+        let user = { username, active, company }
+
         return res.send({message, status, user})
         
         

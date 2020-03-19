@@ -43,6 +43,7 @@ function Signup() {
 		
 		const response = await axios.post(`${process.env.REACT_APP_BACK_DOMAIN}/auth/signup`, {
 			username,
+			company,
             password,
             whatsapp,
             email

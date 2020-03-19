@@ -33,14 +33,23 @@ module.exports = {
         
     },
     async signup(req, res) {
-        let { username, email, whatsapp, password } = req.body
+        let { username, email, whatsapp, password, company } = req.body
         
-        let user = await User.findOne({username})
+        let user = await User.findOne({
+            $or:[
+                {username},
+                {email},
+                {whatsapp}
+            ]
+        })
+
+        console.log(user)
 
         const error = []
 
         if(user) error.push('Este usuário já existe')
         if(!username || username.length < 5) error.push('Usuário inválido')
+        if(!company || company.length < 5) error.push('Nome de Empresa inválido')
         if(!email || email.length < 15) error.push('Email inválido')
         if(!whatsapp || whatsapp.length < 13) error.push('Whatsapp inválido, ex: 5561998877665')
         if(!password || password.length < 8) error.push('Senha muito curta')
@@ -51,6 +60,7 @@ module.exports = {
         user = {
             username,
             password: passwordHash,
+            company,
             whatsapp,
             email,
             whatsappKey: generateKey(),
