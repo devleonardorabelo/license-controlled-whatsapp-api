@@ -27,6 +27,8 @@ module.exports = {
         expand: ["latest_invoice.payment_intent"]
       });
 
+      console.log(subscription)
+
       await User.updateOne({
         _id: currentUser.id
       },{

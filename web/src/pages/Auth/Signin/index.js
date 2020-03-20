@@ -7,9 +7,9 @@ import {
 	Container,
 	ButtonAction,
 	Input,
-	LinkAction
+	LinkAction,
+	Alert
 } from '../../../components/StyledComponents'
-import styled from 'styled-components'
 
 import axios from 'axios'
 
@@ -17,22 +17,10 @@ function Signin() {
 	
 	const [username, setUsername]= useState('')
 	const [password, setPassword]= useState('')
-	const [isError, setIsError] = useState(false)
-	const [error, setError]= useState(null)
+	const [alert, setAlert] = useState(false)
+	const [textAlert, setTextAlert]= useState(null)
 
 	let history = useHistory()
-
-	const Alert = styled.div`
-		display: ${isError ? "block" : "none"};
-		position: absolute;
-		padding: 10px 20px;
-		color: #fff;
-		font-weight: bold;
-		border-radius: 10px;
-		background: red;
-		right: 10px;
-		top: 10px;
-	`;
 
 	async function handleSignin(e){
 		e.preventDefault()
@@ -43,11 +31,11 @@ function Signin() {
 		})
 	
 		if(response.data.error){
-			setIsError(true)
-			setError(response.data.error)
+			setAlert(true)
+			setTextAlert(response.data.error)
 			return setTimeout(() => {
-				setIsError(false)
-				setError(null)
+				setAlert(false)
+				setTextAlert(null)
 			}, 3000)
 		}
 
@@ -69,10 +57,10 @@ function Signin() {
 						<Link to="/signup">
 							<LinkAction>Não tem uma conta? Clique aqui!</LinkAction>
 						</Link>
-						<Alert>{error}</Alert>
-					</Column>
+					</Column>	
 				</Container>
 			</Column>	
+			<Alert alert={alert}>{textAlert}</Alert>
 		</Main>
 
 	)

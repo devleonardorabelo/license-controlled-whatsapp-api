@@ -22,7 +22,8 @@ import {
     P,
     Avatar,
     ButtonAction,
-    Input
+    Input,
+    Alert
   } from '../../components/StyledComponents'
 
 function Profile(){
@@ -33,20 +34,8 @@ function Profile(){
     const [ currentPwd, setCurrentPwd ] = useState('')
     const [ newPwd, setNewPwd ] = useState('')
     const [ confirmNewPwd, setConfirmNewPwd ] = useState('')
-    const [ status, setStatus ] = useState(false)
-    const [ alerts, setAlerts ] = useState([])
-
-    const Alert = styled.div`
-      display: ${status ? "block" : "none"};
-      position: absolute;
-      padding: 10px 20px;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 10px;
-      background: red;
-      right: 10px;
-      top: 10px;
-    `;
+    const [ alert, setAlert ] = useState(false)
+    const [ textAlert, setTextAlert ] = useState([])
 
     useEffect(() => {
 
@@ -89,11 +78,12 @@ function Profile(){
       let data = await response.json()
 
       if(data.alert){
-        setStatus(true)
-        setAlerts(data.alert)
+        setAlert(true)
+        setTextAlert(data.alert)
+  
         return setTimeout(() => {
-          setStatus(false)
-          setAlerts([])
+          setAlert(false)
+          setTextAlert([])
         }, 3000)
       }
 
@@ -143,8 +133,8 @@ function Profile(){
                 </Column>
               </Column>
             </Container>
-            <Alert>
-              {alerts.map(eachAlert => (
+            <Alert alert={alert}>
+              {textAlert.map(eachAlert => (
                 <div key={Math.random()}>{eachAlert}</div>
               ))}
             </Alert>

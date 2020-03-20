@@ -228,3 +228,14 @@ export const Avatar = styled.div`
     width: 150px;
     background-color: red;
 `;
+export const Alert = styled.div`
+    display: ${props => props.alert ? "block" : "none"};
+    position: absolute;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    background: red;
+    right: 10px;
+    top: 10px;
+`;
