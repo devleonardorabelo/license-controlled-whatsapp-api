@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useInput } from 'react'
 import { Link } from 'react-router-dom'
-
+import API from '../../configs/axios'
 import styled from 'styled-components'
 import NavPanel from '../../components/NavPanel'
 
@@ -41,20 +41,11 @@ function Profile(){
 
       async function loadData(){
 
-          const response = await fetch(`${process.env.REACT_APP_BACK_DOMAIN}/panel/profile`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('usertoken')}`
-            },
-            mode: 'cors',
-          })
+          const response = await API.get('/panel/profile')
 
-          let data = await response.json()
-
-          setData(data)
-          setCompany(data.company)
-          setWhatsapp(data.whatsapp)
+          setData(response.data)
+          setCompany(response.data.company)
+          setWhatsapp(response.data.whatsapp)
 
       }
 
@@ -65,21 +56,14 @@ function Profile(){
     async function handleUpdateData(e) {
       e.preventDefault()
 
-      const response = await fetch(`${process.env.REACT_APP_BACK_DOMAIN}/panel/update/data`, { 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('usertoken')}`
-        },
-        mode: 'cors',
-        body: JSON.stringify({company, whatsapp})
+      const response = await API.post('/panel/update/data', {
+        company,
+        whatsapp
       })
       
-      let data = await response.json()
-
-      if(data.alert){
+      if(response.data.alert){
         setAlert(true)
-        setTextAlert(data.alert)
+        setTextAlert(response.data.alert)
   
         return setTimeout(() => {
           setAlert(false)

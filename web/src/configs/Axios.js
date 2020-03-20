@@ -1,5 +1,8 @@
 import axios from 'axios'
 
-export const API = axios.create({
-	baseURL: `process.env.REACT_APP_BACK_DOMAIN`
+export default axios.create({
+	baseURL: process.env.REACT_APP_BACK_DOMAIN,
+	headers: { 
+		Authorization: `Bearer ${localStorage.getItem('usertoken')}`
+	}
 });

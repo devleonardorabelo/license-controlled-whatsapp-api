@@ -11,7 +11,7 @@ import {
 	Alert
 } from '../../../components/StyledComponents'
 
-import axios from 'axios'
+import API from '../../../configs/axios'
 
 function Signin() {
 	
@@ -25,7 +25,7 @@ function Signin() {
 	async function handleSignin(e){
 		e.preventDefault()
 		
-		const response = await axios.post(`${process.env.REACT_APP_BACK_DOMAIN}/auth/signin`, {
+		const response = await API.post('/auth/signin', {
 			username,
 			password
 		})

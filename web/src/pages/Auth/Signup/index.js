@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
-import axios from 'axios'
+import API from '../../../configs/axios'
 
 import {
 	Main,
@@ -29,7 +29,7 @@ function Signup() {
 	async function handleSignin(e){
 		e.preventDefault()
 		
-		const response = await axios.post(`${process.env.REACT_APP_BACK_DOMAIN}/auth/signup`, {
+		const response = await API.post('/auth/signup', {
 			username,
 			company,
             password,

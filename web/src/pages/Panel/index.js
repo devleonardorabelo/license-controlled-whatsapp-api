@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import API from '../../configs/axios'
 
 import NavPanel from '../../components/NavPanel'
 
@@ -28,7 +28,7 @@ function Panel() {
 
     async function loadMessages(){
 
-      const response = await axios.get(`${process.env.REACT_APP_BACK_DOMAIN}/panel`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+      const response = await API.get(`/panel`)
       setMessages(response.data.message)
       setStatus(response.data.status)
       setUser(response.data.user)
@@ -40,7 +40,7 @@ function Panel() {
   }, [])
 
   const handleDestroy = async (id) => {
-    const response = await axios.delete(`${process.env.REACT_APP_BACK_DOMAIN}/panel/delete?id=${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+    const response = await API.delete(`/panel/delete?id=${id}`)
     setMessages(response.data.message)
   }
 
