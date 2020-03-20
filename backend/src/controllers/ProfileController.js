@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const bcrypt = require('bcryptjs')
 
 module.exports = {
     async show(req, res) {
@@ -33,5 +34,36 @@ module.exports = {
             return res.status(401).send({alert: 'Houve um erro, tente novamente'})
         }
         
+    },
+    async updatePwd(req, res) {
+        let { currentPwd, newPwd, confirmPwd } = req.body
+        const alert = []
+
+        try {
+
+            let user = await User.findOne({_id: currentUser.id})
+
+            if(!await bcrypt.compare(currentPwd, user.password)) alert.push('Senha atual não é esta')
+            if(newPwd != confirmPwd) alert.push('Novas senhas não batem')
+            if(!newPwd || newPwd.length < 8) alert.push('Senha muito curta')
+
+            if(alert.length > 0) return res.status(200).send({alert})
+            
+            let passwordHash = await bcrypt.hash(newPwd, 10)
+
+            await User.updateOne({
+                _id: currentUser.id
+            },{
+                password: passwordHash
+            })
+
+            alert.push('Senha alterada com sucesso')
+
+            return res.status(200).send({alert})
+ 
+        } catch(err) {
+            return res.status(401).send({alert: 'Hourve um erro, tente novamente'})
+        }
+
     }
 }

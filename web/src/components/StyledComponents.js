@@ -230,9 +230,10 @@ export const Avatar = styled.div`
 `;
 export const Alert = styled.div`
     display: ${props => props.alert ? "block" : "none"};
-    position: absolute;
+    position: fixed;
     padding: 10px 20px;
-    color: #fff;
+    color: '#fff';
+    backgroun-color: ${props => props.background || 'red'};
     font-weight: bold;
     border-radius: 10px;
     background: red;

@@ -15,6 +15,8 @@ routes.get('/profile', ProfileController.show)
 
 routes.post('/update/data', ProfileController.update)
 
+routes.post('/update/password', ProfileController.updatePwd)
+
 routes.delete('/delete', PanelController.destroy)
 
 module.exports = routes

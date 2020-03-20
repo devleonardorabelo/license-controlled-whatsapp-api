@@ -33,7 +33,7 @@ function Profile(){
     const [ whatsapp, setWhatsapp ] = useState('')
     const [ currentPwd, setCurrentPwd ] = useState('')
     const [ newPwd, setNewPwd ] = useState('')
-    const [ confirmNewPwd, setConfirmNewPwd ] = useState('')
+    const [ confirmPwd, setconfirmPwd ] = useState('')
     const [ alert, setAlert ] = useState(false)
     const [ textAlert, setTextAlert ] = useState([])
 
@@ -74,7 +74,29 @@ function Profile(){
 
     }
 
-    function handleUpdatePassword(e) {
+    async function handleUpdatePassword(e) {
+      e.preventDefault()
+
+      const response = await API.post('/panel/update/password',{
+        currentPwd,
+        newPwd,
+        confirmPwd,
+      })
+
+
+
+      if(response.data.alert){
+        
+        setAlert(true)
+        setTextAlert(response.data.alert)
+
+        return setTimeout(() => {
+          setAlert(false)
+          setTextAlert([])
+        }, 3000)
+      }
+
+
 
     }
 
@@ -104,14 +126,14 @@ function Profile(){
                 <Column as='form' onSubmit={handleUpdatePassword}>
                   <H5>Trocar senha</H5>
                   <Row>
-                    <Input placeholder='senha atual' onChange={e => setCurrentPwd(e.target.value)}/>
+                    <Input type='password' placeholder='senha atual' onChange={e => setCurrentPwd(e.target.value)}/>
                   </Row>
                   <Row>
-                    <Input placeholder='nova senha' onChange={e => setNewPwd(e.target.value)}/>
-                    <Input placeholder='confirmar senha' onChange={e => setConfirmNewPwd(e.target.value)}/>
+                    <Input type='password' placeholder='nova senha' onChange={e => setNewPwd(e.target.value)}/>
+                    <Input type='password' placeholder='confirmar senha' onChange={e => setconfirmPwd(e.target.value)}/>
                   </Row>
                   <Row>
-                    <ButtonAction>Trocar senha</ButtonAction>
+                    <ButtonAction type="submit">Trocar senha</ButtonAction>
                   </Row>
               
                 </Column>
