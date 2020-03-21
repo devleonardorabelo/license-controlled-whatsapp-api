@@ -21,6 +21,7 @@ function Recover() {
 	const [ alert, setAlert ] = useState(false)
   const [ textAlert, setTextAlert ] = useState(null)
   const [ disabled, setDisabled ] = useState(false)
+  const [ statusAlert, setStatusAlert ] = useState(false)
 
   let history = useHistory()
 
@@ -37,15 +38,18 @@ function Recover() {
       confirm
     })
     
+    if(response.data.success) setStatusAlert(true)
+
     if(response.data){
       setAlert(true)
       setTextAlert(response.data.alert)
       setTimeout(() => {
         setAlert(false)
         setTextAlert(null)
+        setStatusAlert(false)
         if(response.data.success == true) return history.push('/signin')
         setDisabled(false)
-      }, 3000)
+      }, 2000)
     }
 
   }
@@ -62,7 +66,7 @@ function Recover() {
 					</Column>	
 				</Container>
 			</Column>	
-			<Alert alert={alert}>{textAlert}</Alert>
+			<Alert alert={alert} statusAlert={statusAlert}>{textAlert}</Alert>
 		</Main>
   )
 

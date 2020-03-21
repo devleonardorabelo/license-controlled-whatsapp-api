@@ -232,11 +232,10 @@ export const Alert = styled.div`
     display: ${props => props.alert ? "block" : "none"};
     position: fixed;
     padding: 10px 20px;
-    color: '#fff';
-    backgroun-color: ${props => props.background || 'red'};
+    color: #ffffff;
+    background: ${props => props.statusAlert ? 'green' : 'red'};
     font-weight: bold;
     border-radius: 10px;
-    background: red;
     right: 10px;
     top: 10px;
 `;

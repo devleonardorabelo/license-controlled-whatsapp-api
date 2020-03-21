@@ -36,6 +36,7 @@ function Profile(){
     const [ confirmPwd, setconfirmPwd ] = useState('')
     const [ alert, setAlert ] = useState(false)
     const [ textAlert, setTextAlert ] = useState([])
+    const [ statusAlert, setStatusAlert ] = useState(false)
 
     useEffect(() => {
 
@@ -71,14 +72,16 @@ function Profile(){
           Authorization: `Bearer ${localStorage.getItem('usertoken')}`
         },
       })
-    
+
+      if(response.data.success) setStatusAlert(true)
+
       if(response.data.alert){
         setAlert(true)
         setTextAlert(response.data.alert)
-  
-        return setTimeout(() => {
+        setTimeout(() => {
           setAlert(false)
           setTextAlert([])
+          setStatusAlert(false)
         }, 3000)
       }
 
@@ -99,15 +102,16 @@ function Profile(){
           Authorization: `Bearer ${localStorage.getItem('usertoken')}`
         },
       })
+
+      if(response.data.success) setStatusAlert(true)
       
       if(response.data.alert){
-        
         setAlert(true)
         setTextAlert(response.data.alert)
-
-        return setTimeout(() => {
+        setTimeout(() => {
           setAlert(false)
           setTextAlert([])
+          setStatusAlert(false)
         }, 3000)
       }
 
@@ -154,7 +158,7 @@ function Profile(){
                 </Column>
               </Column>
             </Container>
-            <Alert alert={alert}>
+            <Alert alert={alert} statusAlert={statusAlert}>
               {textAlert.map(eachAlert => (
                 <div key={Math.random()}>{eachAlert}</div>
               ))}

@@ -15,9 +15,14 @@ module.exports = {
         let currentUser = req.headers.user
 
         let { company, whatsapp } = req.body
+
+        console.log(req.body)
+
         const alert = []
 
         let haveWhatsapp = await User.findOne({whatsapp})
+
+        console.log(haveWhatsapp)
 
         if(haveWhatsapp.whatsapp != null && haveWhatsapp.whatsapp != currentUser.whatsapp) alert.push('Esse whatsapp já está sendo usado')
         if(!company || company.length <= 4) alert.push('Nome da Empresa inválido')
@@ -33,7 +38,8 @@ module.exports = {
             })
 
             alert.push('Alteração salva com sucesso')
-            return res.send({alert})
+
+            return res.send({alert, success: true})
 
         } catch (err) {
             return res.status(401).send({alert: 'Houve um erro, tente novamente'})
@@ -68,7 +74,7 @@ module.exports = {
 
             alert.push('Senha alterada com sucesso')
 
-            return res.status(200).send({alert})
+            return res.send({alert, success: true})
  
         } catch(err) {
             return res.status(401).send({alert: 'Hourve um erro, tente novamente'})

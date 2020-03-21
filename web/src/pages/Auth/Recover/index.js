@@ -18,11 +18,16 @@ import axios from 'axios'
 function Recover() {
 
   const [ email, setEmail ] = useState('')
-	const [alert, setAlert] = useState(false)
-  const [textAlert, setTextAlert]= useState(null)
+	const [ alert, setAlert ] = useState(false)
+  const [ textAlert, setTextAlert ] = useState(null)
+  const [ disabled, setDisabled ] = useState(false)
+  const [ statusAlert, setStatusAlert ] = useState(false)  
   
   async function handleRecover(e) {
+
     e.preventDefault()
+
+    setDisabled(true)
 
     const response = await axios.post(`${process.env.REACT_APP_BACK_DOMAIN}/auth/recover`,{
       email
@@ -32,13 +37,17 @@ function Recover() {
       }
     })
 
+    if(response.data.success) setStatusAlert(true)
+
     if(response.data){
       setAlert(true)
       setTextAlert(response.data.alert)
-      return setTimeout(() => {
+      setTimeout(() => {
         setAlert(false)
         setTextAlert(null)
-      }, 3000)
+        setStatusAlert(false)
+        setDisabled(false)
+      }, 2000)
     }
 
 
@@ -54,11 +63,11 @@ function Recover() {
 					<Column as="form" onSubmit={handleRecover}>
 						<H2 margin={'0 0 20px 0'}>Recuperar</H2>
 						<Input type='email' placeholder="seu email" onChange={e => setEmail(e.target.value)}/>
-						<ButtonAction type="submit" width={'100%'}>enviar</ButtonAction>
+						<ButtonAction type="submit" disabled={disabled}>enviar</ButtonAction>
 					</Column>	
 				</Container>
 			</Column>	
-			<Alert alert={alert}>{textAlert}</Alert>
+			<Alert alert={alert} statusAlert={statusAlert}>{textAlert}</Alert>
 		</Main>
   )
 

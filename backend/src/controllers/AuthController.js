@@ -124,7 +124,7 @@ module.exports = {
             var mailOptions = {
                 from: `Wule | InstantZap <${process.env.NO_REPLY_MAIL}>`,
                 to: email,
-                subject: 'Recuperação de Senha do InstantZap',
+                subject: 'Recuperação de Senha do GerenciaZap',
                 headers: {
                     'MIME-Version': '1.0',
                     'Message-ID': '', 
@@ -143,10 +143,13 @@ module.exports = {
             
             if(!sent) res.status(400).send({alert: 'Houve um erro, tente novamente'})
 
-            return res.send({alert: 'Foi enviado um email para a recuperação da sua senha'})
+            return res.send({
+                alert: 'Foi enviado um email para a recuperação da sua senha',
+                success: true
+            })
 
         } catch (err) {
-            return res.send({error: 'Houve um erro. Tente novamente'})
+            return res.send({alert: 'Houve um erro. Tente novamente'})
         }
       
     },
