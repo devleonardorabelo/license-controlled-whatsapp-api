@@ -5,6 +5,9 @@ const generateKey = require('../utils/generateKey')
 module.exports = {
   async store(req, res) {
 
+    let currentUser = req.headers.user
+    console.log(currentUser)
+
     const payment = req.body.payment_method
 
     try{
@@ -17,17 +20,17 @@ module.exports = {
         }
       })
       
+      console.log(customer)
+
       stripe.paymentMethods.attach(payment,
         {customer: customer.id},
       );
-
+      
       const subscription = await stripe.subscriptions.create({
         customer: customer.id,
         items: [{ plan: process.env.PLAN }],
         expand: ["latest_invoice.payment_intent"]
       });
-
-      console.log(subscription)
 
       await User.updateOne({
         _id: currentUser.id
@@ -37,7 +40,7 @@ module.exports = {
       })
       
       res.send({paid: true})
-
+      
     } catch(err) {
       console.log(err)
     }

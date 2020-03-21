@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import API from '../../configs/axios'
+import axios from 'axios'
 import NavPanel from '../../components/NavPanel'
 
 import {
@@ -24,7 +24,8 @@ function Contacts(){
 
         async function loadContacts(){
 
-            const response = await API.get('/panel/contacts')
+            const response = await axios.get(`${process.env.REACT_APP_BACK_DOMAIN}/panel/contacts`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+            
             setContacts(response.data.encContacts)
             setCustomers(response.data.customers)
         }

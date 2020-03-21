@@ -3,11 +3,16 @@ const bcrypt = require('bcryptjs')
 
 module.exports = {
     async show(req, res) {
+
+        let currentUser = req.headers.user
+
         let { whatsapp, email, active, whatsappKey, company } = await User.findOne({_id: currentUser.id})
         const data = { whatsapp, email, active, whatsappKey, company }
         return res.send(data)
     },
     async update(req, res) {
+
+        let currentUser = req.headers.user
 
         let { company, whatsapp } = req.body
         const alert = []
@@ -36,7 +41,11 @@ module.exports = {
         
     },
     async updatePwd(req, res) {
+
+        let currentUser = req.headers.user
+
         let { currentPwd, newPwd, confirmPwd } = req.body
+        
         const alert = []
 
         try {

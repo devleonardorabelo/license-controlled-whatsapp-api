@@ -9,6 +9,7 @@ const crypto        = require('crypto')
 
 module.exports = {
     async signin(req, res) {
+
         let { username, password } = req.body
         let user = await User.findOne({username})
         if(!user){
@@ -43,18 +44,19 @@ module.exports = {
             ]
         })
 
-        console.log(user)
-
         const error = []
 
-        if(user.username == username) error.push('Este usuário já está em uso')
-        if(user.whatsapp == whatsapp) error.push('Este whatsapp já está em uso')
-        if(user.email == email) error.push('Este email já está em uso')
-        if(!username || username.length < 5) error.push('Usuário inválido')
-        if(!company || company.length < 5) error.push('Nome de Empresa inválido')
-        if(!email || email.length < 15) error.push('Email inválido')
-        if(!whatsapp || whatsapp.length < 13) error.push('Whatsapp inválido, ex: 5561998877665')
-        if(!password || password.length < 8) error.push('Senha muito curta')
+        if(user) {
+            if(user.username == username) error.push('Este usuário já está em uso')
+            if(user.whatsapp == whatsapp) error.push('Este whatsapp já está em uso')
+            if(user.email == email) error.push('Este email já está em uso')
+            if(!username || username.length < 5) error.push('Usuário inválido')
+            if(!company || company.length < 5) error.push('Nome de Empresa inválido')
+            if(!email || email.length < 15) error.push('Email inválido')
+            if(!whatsapp || whatsapp.length < 13) error.push('Whatsapp inválido, ex: 5561998877665')
+            if(!password || password.length < 8) error.push('Senha muito curta')    
+        }
+        
 
         if(error.length > 0) return res.send({error})
 
@@ -76,7 +78,8 @@ module.exports = {
         const payload = {
             id: newUser.id,
             username: newUser.username,
-            whatsapp: newUser.whatsapp
+            whatsapp: newUser.whatsapp,
+            email: newUser.email
         }
 
         let token = jwt.sign(payload, process.env.SECRET, {

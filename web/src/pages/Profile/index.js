@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useInput } from 'react'
 import { Link } from 'react-router-dom'
-import API from '../../configs/axios'
+import axios from 'axios'
 import styled from 'styled-components'
 import NavPanel from '../../components/NavPanel'
 
@@ -41,7 +41,12 @@ function Profile(){
 
       async function loadData(){
 
-          const response = await API.get('/panel/profile')
+          const response = await axios.get(`${process.env.REACT_APP_BACK_DOMAIN}/panel/profile`,{
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('usertoken')}`
+            },
+          })
 
           setData(response.data)
           setCompany(response.data.company)
@@ -56,11 +61,17 @@ function Profile(){
     async function handleUpdateData(e) {
       e.preventDefault()
 
-      const response = await API.post('/panel/update/data', {
+      const response = await axios.post(`${process.env.REACT_APP_BACK_DOMAIN}/panel/update/data`,{
         company,
         whatsapp
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('usertoken')}`
+        },
       })
-      
+    
       if(response.data.alert){
         setAlert(true)
         setTextAlert(response.data.alert)
@@ -77,14 +88,18 @@ function Profile(){
     async function handleUpdatePassword(e) {
       e.preventDefault()
 
-      const response = await API.post('/panel/update/password',{
+      const response = await axios.post(`${process.env.REACT_APP_BACK_DOMAIN}/panel/update/password`,{
         currentPwd,
         newPwd,
-        confirmPwd,
+        confirmPwd
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('usertoken')}`
+        },
       })
-
-
-
+      
       if(response.data.alert){
         
         setAlert(true)

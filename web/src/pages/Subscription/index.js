@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom'
 import { loadStripe } from "@stripe/stripe-js";
-import API from '../../configs/axios'
+import axios from 'axios'
 import { BodyRow, Main, Container1, Container2, Grow1, Box, InputTextNmf, Column, RowEnd, ButtonAction, Button, Row } from '../../components/StyledComponents'
 
 import {
@@ -27,12 +27,21 @@ const CheckoutForm = () => {
       card: elements.getElement(CardElement)
     });
 
+    console.log(result)
+
     try {
 
-      const response = await API.post('/payment',{
+      const response = await axios.post(`${process.env.REACT_APP_BACK_DOMAIN}/payment`,{
         email: 'leonardomrabelo@live.com',
-        payment_method: result.payment_method.id
+        payment_method: result.paymentMethod.id
+      },{
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('usertoken')}`
+        }
       })
+
+      console.log(response.data)
 
       if(response.data.paid == true){
         return history.push('/panel')
@@ -46,11 +55,12 @@ const CheckoutForm = () => {
 
   return (<>
     
-            <form onSubmit={handleSubmit}>
-              <CardElement/>
-            </form>
+    <form onSubmit={handleSubmit}>
+      <CardElement/>
+      <button type="submit" disabled={!stripe || sent} onClick={setSent}>Pay</button>   
+    </form>
 
-              <button type="submit" disabled={!stripe || sent} onClick={setSent}>Pay</button>  
+     
 
   </>);
 };

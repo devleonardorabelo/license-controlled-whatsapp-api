@@ -1,10 +1,16 @@
 const User = require ('../models/User')
 const Message = require ('../models/Message')
 
+
 module.exports = {
     async show(req, res) {
 
+        let currentUser = req.headers.user
+
+        console.log(req.headers.user)
+        
         let message = await Message.find({user: currentUser.id}).populate('customer')
+
         let status  = {
             news: 0,
             today: 0,
