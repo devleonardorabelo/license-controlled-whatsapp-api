@@ -10,7 +10,8 @@ import {
 	ButtonAction,
 	Input,
 	LinkAction,
-	Alert
+	Alert,
+	ButtonNmf
 } from '../../../components/StyledComponents'
 
 
@@ -55,6 +56,9 @@ function Signup() {
 
 		<Main height={'100vh'}>
 			<Column margin={'auto'}>
+				<Container padding={'0 0 20px 0'}>
+					<Link to='/signin'><ButtonNmf /></Link>
+				</Container>
 				<Container width={'300px'}>
 					<Column as="form" onSubmit={handleSignin}>
 						<H2 margin={'0 0 20px 0'}>Criar uma conta</H2>

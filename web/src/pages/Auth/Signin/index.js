@@ -57,6 +57,9 @@ function Signin() {
 						<Input name="username" placeholder="usuário" onChange={e => setUsername(e.target.value)}/>
 						<Input name="password" type="password" placeholder="senha" onChange={e => setPassword(e.target.value)}/>
 						<ButtonAction type="submit" width={'100%'}>entrar</ButtonAction>
+						<Link to="/recover">
+							<LinkAction>Esqueci minha senha</LinkAction>
+						</Link>
 						<Link to="/signup">
 							<LinkAction>Não tem uma conta? Clique aqui!</LinkAction>
 						</Link>
