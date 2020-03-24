@@ -11,13 +11,17 @@ module.exports = {
     async signin(req, res) {
 
         let { username, password } = req.body
+
+        if(!username) res.send({error: 'preencha o usuário'})
+        if(!password) res.send({error: 'preencha a senha'})
+
         let user = await User.findOne({username})
         if(!user){
-            let error = 'user not found'
+            let error = 'usuário não encontrado'
             return res.send({error})
         }
         if(!await bcrypt.compare(password, user.password)){
-            let error = 'incorrect password'
+            let error = 'senha incorreta'
             return res.send({error})
         }
         const payload = {
@@ -83,7 +87,7 @@ module.exports = {
         }
 
         let token = jwt.sign(payload, process.env.SECRET, {
-            expiresIn: 500,
+            expiresIn: 5000,
         })
 
         res.send(token)

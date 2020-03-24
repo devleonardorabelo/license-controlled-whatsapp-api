@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+html, body {
+  font-size: 10px;
+}
+
 div, section, header, nav, main, aside, footer {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

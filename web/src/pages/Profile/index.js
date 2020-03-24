@@ -16,7 +16,7 @@ import {
     Logout,
     Main,
     Box,
-    ButtonNmf,
+    Button,
     H2,
     H5,
     P,
@@ -125,7 +125,7 @@ function Profile(){
         <Main>
           <Column>
             <Container padding={'0 10px'}>
-            <Link to='/panel'><ButtonNmf /></Link>
+            <Link to='/panel'><Button /></Link>
             </Container>
             <Container padding={'40px 10px'}>
               <Column>

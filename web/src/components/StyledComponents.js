@@ -1,6 +1,16 @@
 import styled from 'styled-components'
 
 /////////////////////////////////
+
+/*
+#729EA1 - GREEN SHEEN
+#E75A7C - DARK PINK
+#B5BD89 - SAGE
+#DFBE99 - PALE GOLD
+#44bba4 - OCEAN GREEN
+
+*/
+
 export const Nav = styled.nav`
     display: -webkit-box;
     display: -ms-flexbox;
@@ -15,9 +25,8 @@ export const Nav = styled.nav`
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    height: 100vh;
-    padding: 20px;
-    background-color: pink;
+    height: 100vh; 
+    background-color: #44bba4;
     @media (max-width: 860px) {
         position: static;
         height: auto;
@@ -43,6 +52,7 @@ export const NavResponsive = styled.div`
 `;
 
 export const NavItem = styled.div`
+    padding: 10px;
     overflow-y: hidden;
     @media (max-width: 860px) {
         width: auto;
@@ -52,9 +62,13 @@ export const NavItem = styled.div`
 `;
 export const NavLink = styled.div`
     display: block;
-    padding: 20px;
-    background: red;
+    height: 32px;
+    background: ${props => props.background || '#fff'};
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
     margin-bottom: 20px;
+
     span{
         display: none;
         @media (max-width: 860px){
@@ -65,12 +79,15 @@ export const NavLink = styled.div`
         width: auto;
     }
 `;
-export const Logo = styled.div`
+export const Logo = styled.a`
+    display: block;
+    margin: 20px 10px 0 10px;
     padding: 20px;
     background: green;
 `;
-export const Logout = styled.div`
+export const Logout = styled.a`
     display: block;
+    margin: 0 10px 20px 10px;
     padding: 20px;
     background: green;
     border:0;
@@ -93,9 +110,9 @@ export const Main = styled.main`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding: 20px 40px 0 100px;
+    padding: ${props => props.padding || '20px 40px 0 100px'};
     height: ${props => props.height || 'auto'};
-    background: green;
+    background: ${props => props.background || 'transparent'};
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
@@ -104,7 +121,7 @@ export const Main = styled.main`
         -ms-flex-direction: column;
             flex-direction: column;
     @media (max-width: 860px) {
-        padding: 20px !important;
+        padding: ${props => props.isResponsive ? '0' : '20px !important'};
     }
 `;
 export const Row = styled.div`
@@ -119,8 +136,10 @@ export const Row = styled.div`
         flex-wrap: ${props => props.wrap || 'nowrap'};
     padding: ${props => props.padding || '0'};
     margin: ${props => props.margin || '0'};
-    background: pink;
+    min-height: ${props => props.minHeight || 'auto'};
+    background: ${props => props.background || 'transparent'};
     justify-content: ${props => props.content || 'flex-start'};
+    width: ${props => props.width || 'auto'};
     @media (max-width: 860px) {
         -webkit-box-orient: vertical !important;
         -webkit-box-direction: normal !important;
@@ -138,13 +157,18 @@ export const Column = styled.div`
             flex-direction: column;
     padding: ${props => props.padding || '0'};
     margin: ${props => props.margin || '0'};
-    background: magenta;
+    background: ${props => props.background || 'transparent'};
+    width: ${props => props.width || 'auto'};
+    min-height: ${props => props.minHeight || 'auto'};
+    @media (max-width: 860px) {
+        width: ${props => props.isResponsive ? 'auto' : props.width}
+    }
 `;
 export const Container = styled.div`
     display: block;
     width: ${props => props.width || '100%'};
     height: ${props => props.height || 'auto'};
-    background: orange;
+  
     padding: ${props => props.padding || '0'};
     margin: ${props => props.margin || '0'};
     @media (max-width: 860px){
@@ -152,32 +176,72 @@ export const Container = styled.div`
     }
 `;
 export const Box = styled.div`
-    background-color: #fcfcfc;
+    background-color: #fff;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
-            flex-grow: ${props => props.grow || '1'};
-    padding: ${props => props.padding || '20px'};
-    margin: ${props => props.margin || '20px 10px'};
-`;
-export const CustomBox = styled.div`
+    flex-grow: ${props => props.flexGrow || '0'};
+    width: ${props => `calc(${props.width} - 20px)`|| 'auto'};
     padding: ${props => props.padding || '20px'};
     margin: ${props => props.margin || '10px'};
-    width: ${props => `calc(${props.width} - ${props.margin})`}
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 1px 0 rgba(59,89,178,.08),0 4px 14px rgba(59,89,178,.06);
+    box-shadow: 0 0 1px 0 rgba(59,89,178,.08),0 4px 14px rgba(59,89,178,.06);
+    margin-bottom: 2rem;
+    
+    @media (max-width: 860px){
+        width: ${props => props.isResponsive ? 'auto' : `${props.width}`};
+    }
 `;
+
 //BUTTON
-export const ButtonNmf = styled.div`
-    display: block;
-    height: 40px;
-    width: 40px;
-    background: black;
+export const Button = styled.button`
+	display: inline-block;
+    font-weight: 400;
+    font-family: Oxygen;
+	line-height: 3rem;
+	text-align: center;
+	vertical-align: middle;
+    cursor: pointer;
+    color: ${props => props.inverted ? '#44bba4' : '#fff'};
+    letter-spacing: 0.5px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 2px solid transparent;
+	padding: .5rem 3rem;
+	font-size: 1.6rem;
+	border-radius: 2rem;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    -webkit-box-shadow: 0 2px 1px rgba(111,115,128,.3);
+    box-shadow: 0 2px 1px rgba(111,115,128,.3);
+    outline: 0;
+    margin: ${props => props.margin || '0'};
+    background-color: ${props => props.inverted ? '#f7faff' : '#44bba4'};    
+    &:hover {
+        background: #44bba4;
+    }
 `;
 export const ButtonAction = styled.button`
-    padding: 15px;
-    font-size: 1em;
+    display: block;
+    width: 44px;
+    height: 44px;
+    padding: 0;
     border: 0;
-    width: ${props => props.width || 'auto'};
-    margin-bottom: 20px;
-    background: red;
+    border-radius: 100%;
+    background: ${props => props.background || '#44bba4'};
+    background-position: center;
+    background-repeat: no-repeat;
+`;
+export const ButtonLink = styled.a`
+    display: block;
+    width: 44px;
+    height: 44px;
+    background: ${props => props.background || '#44bba4'};
+    background-position: center;
+    background-repeat: no-repeat;
 `;
 export const Burger = styled.button`
     padding: 20px;
@@ -188,10 +252,26 @@ export const Burger = styled.button`
     }
 `;
 export const Input = styled.input`
-    padding: 15px;
-    font-size: 1em;
-    width: 100%;
     margin-bottom: 20px;
+    display: block;
+    width: 100%;
+    padding: .8rem 1rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    color: #4e5159;
+    background-color: #fff;
+    border: 2px solid #dfe5f2;
+    border-radius: .5rem;
+    transition: .5s;
+    font-family: ABeeZee;
+    font-weight: 700;
+    &::placeholder {
+        color: #D2D6DE;
+        opacity: 1;
+    }
+    &:focus {
+        border: 2px solid blue;
+    }
 `;
 export const LinkAction = styled.div`
     display: block;
@@ -203,39 +283,125 @@ export const LinkAction = styled.div`
 `;
 //TYPOGRAPHY
 export const H1 = styled.h1`
-    font-size: 3em;
+    color: #333;
     margin: ${props => props.margin || '0'};
+    font-family: Oxygen;
+    font-size: 6.103515625em;
+    line-height: 6rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.04em;
 `;
 export const H2 = styled.h2`
-    font-size: 2em;
+    color: #333;
     margin: ${props => props.margin || '0'};
+    font-family: Oxygen;
+    font-size: 4.8828125em;
+    line-height: 6rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
 `;
 export const H3 = styled.h3`
-    font-size: 1.5em;
+    color: #333;
     margin: ${props => props.margin || '0'};
+    font-family: Oxygen;
+    font-size: 3.90625em;
+    line-height: 6rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
+`;
+export const H4 = styled.h4`
+    color: #333;
+    margin: ${props => props.margin || '0'};
+    font-family: Oxygen;
+    font-size: 3.125em;
+    line-height: 6rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
 `;
 export const H5 = styled.h5`
-    font-size: 1.3em;
-    margin: ${props => props.margin || '0'};
+    color: #333;
+    margin: ${props => props.margin || '0'};   
+    font-family: Oxygen;
+    font-size: 2.5em;
+    line-height: 3rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
+`;
+export const H6 = styled.h6`
+    color: #333;
+    margin: ${props => props.margin || '0'};   
+    font-family: Oxygen;
+    font-size: 2em;
+    line-height: 3rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
+`;
+export const H7 = styled.h6`
+    color: #333;
+    margin: ${props => props.margin || '0'}; 
+    font-family: Oxygen;
+    font-size: 1.8em;
+    line-height: 3rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
 `;
 export const P = styled.p`
-    font-size: 1.2em;
+    color: #666;
     margin: ${props => props.margin || '0'};
+    font-family: ABeeZee;
+    font-size: 1.6em;
+    line-height: 3rem;
+    font-weight: 400;
+    font-style: ${props => props.fontStyle || 'normal'};
+    letter-spacing: 0em;
+`;
+export const PB = styled(P)`
+    color: #333;
+    font-family: Oxygen;
+    font-weight: 700;
+`;
+export const Info = styled(P)`
+    font-size: 1.4em;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 0;
 `;
 //MORE
 export const Avatar = styled.div`
-    height: 150px;
-    width: 150px;
-    background-color: red;
+    height: 105px;
+    width: 105px;
+    background-color: #fff;
+    border-radius: 100%;
+    -webkit-box-shadow: 0 0 1px 0 rgba(59,89,178,.08),0 4px 14px rgba(59,89,178,.06);
+    box-shadow: 0 0 1px 0 rgba(59,89,178,.08),0 4px 14px rgba(59,89,178,.06);
 `;
 export const Alert = styled.div`
     display: ${props => props.alert ? "block" : "none"};
     position: fixed;
+    z-index: 9999;
     padding: 10px 20px;
     color: #ffffff;
-    background: ${props => props.statusAlert ? 'green' : 'red'};
-    font-weight: bold;
+    background: ${props => props.statusAlert ? '#44bba4' : '#d1345b'};
     border-radius: 10px;
     right: 10px;
     top: 10px;
+    font-family: ABeeZee;
+    font-size: 1.6em;
+    line-height: 3rem;
+    font-weight: 400;
+    letter-spacing: 0em;
+    @media (max-width: 860px) {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0;
+    }
 `;

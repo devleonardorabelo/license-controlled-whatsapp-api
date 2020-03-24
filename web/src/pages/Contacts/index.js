@@ -8,7 +8,7 @@ import {
     Container,
     Main,
     Box,
-    ButtonNmf,
+    Button,
     H2,
     H5,
     P
@@ -40,7 +40,7 @@ function Contacts(){
             <NavPanel />
             <Main>
                 <Container padding={'0 0 40px 10px'}>
-                    <Link to='/panel'><ButtonNmf /></Link>
+                    <Link to='/panel'><Button /></Link>
                 </Container>
                 <Container padding={'0 10px'}>
                     <H2>Mensagens</H2>
@@ -54,7 +54,7 @@ function Contacts(){
                     ))}
                 </Row>
                 <Row padding={'10px'} content={'flex-end'}>
-                    <ButtonNmf as="a" href={contacts} download={filename} onClick={() => {window.open('https://contacts.google.com/')}}>^</ButtonNmf>
+                    <Button as="a" href={contacts} download={filename} onClick={() => {window.open('https://contacts.google.com/')}}>^</Button>
                 </Row>
             </Main>
         </Row>

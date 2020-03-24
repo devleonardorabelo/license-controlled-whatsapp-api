@@ -9,13 +9,21 @@ import {
   Container,
   Main,
   Box,
-  ButtonNmf,
+  Button,
+  H1,
   H2,
   H3,
+  H4,
+  H5,
+  H6,
+  H7,
   P,
+  PB,
   Column,
   Avatar,
-  ButtonAction
+  ButtonAction,
+  ButtonLink,
+  Info
 } from '../../components/StyledComponents'
 
 function Panel() {
@@ -45,37 +53,73 @@ function Panel() {
   }
   console.log(messages)
 	return (
-    <Row>
+    <Row background={'#f7faff'} minHeight={'100vh'}>
       <NavPanel />
       <Main>
         <Column>
           <Container padding={'0 10px'}>
-            <Link to='/panel'><ButtonNmf /></Link>
+            <Link to='/panel'><ButtonLink background={'url(/img/panel/arrow-left.svg)'}/></Link>
           </Container>
           <Container padding={'40px 10px'}>
+            
             <Row>
               <Avatar></Avatar>
-              <Column padding={'0 20px'}>
-                <H2 margin={'0 0 20px 0'}>{user.company}</H2>
-                <ButtonAction>Meu Perfil</ButtonAction>
+              <Column padding={'10px 20px'}>
+                <H5 margin={'0 0 8px 0'}>{user.company}</H5>
+                <Row>
+                  <Button background={'url(/img/panel/user.svg)'}>Meu perfil</Button>
+                </Row>
               </Column>
-            </Row>
+            </Row>  
+            
           </Container>
-          <Container padding={'0 10px'}>
-            <H2>Mensagens</H2>
-          </Container>
-          <Container>
+          <Container margin={'0 0 20px 0'}>
+            <H6 margin={'0 10px'}>MENSAGENS</H6>
+            <Row wrap={'wrap'}>
             {messages.map(message => (
-              <Box key={message._id}>
-                <H3>{message.customer.name}</H3>
-                {user.active ? <P>{message.message}</P> : <P>Comprar licença</P>}
-                {user.active ? 
-                  <ButtonNmf as="a" target="_blank" href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`}>></ButtonNmf>
-                  :
-                  <Link to="/subcription"><ButtonNmf target="_blank">></ButtonNmf></Link>
-                }
+              <Box key={message._id} width={'50%'} isResponsive>
+                <Row content={'space-between'}>
+                  <div>
+                    <H7 margin={'0 0 -10px'}>{message.customer.name}</H7>
+                    <Info>{message.customer.whatsapp}</Info>
+                    {user.active ? <P fontStyle={'italic'}>"{message.message}"</P> : <P>Comprar licença</P>}  
+                  </div>
+                  <div>
+                    {user.active ? 
+                      <ButtonAction as="a" margin={'8px 0 0 0'} target="_blank" background={'#4eb792 url(/img/panel/send.svg)'} href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`} />
+                      :
+                      <Link to="/subcription"><Button target="_blank">></Button></Link>
+                    }    
+                  </div>
+                </Row> 
               </Box>
             ))}
+            </Row>
+          </Container>
+          <Container>
+            <H6 margin={'0 10px'}>RELATÓRIOS</H6>
+            <Row>
+              <Box flexGrow={'1'}>
+                <Row>
+                  <Box>
+                    <P margin={'0 0 -16px 0'}>Hoje</P>
+                    <H3>{status.today}</H3>
+                  </Box>
+                  <Box>
+                    <P margin={'0 0 -16px 0'}>Esta semana</P>
+                    <H3>{status.week}</H3>
+                  </Box>
+                  <Box>
+                    <P margin={'0 0 -16px 0'}>Este mês</P>
+                    <H3>{status.month}</H3>
+                  </Box>
+                  <Box flexGrow={'1'}>
+                    <P margin={'0 0 -16px 0'}>Clientes registrados</P>
+                    <H3>{status.month}</H3>
+                  </Box>
+                </Row>
+              </Box>
+            </Row>
           </Container>
         </Column>
       </Main>

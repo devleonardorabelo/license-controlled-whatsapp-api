@@ -10,7 +10,7 @@ import {
 	Input,
 	LinkAction,
   Alert,
-  ButtonNmf
+  Button
 } from '../../../components/StyledComponents'
 
 import axios from 'axios'
@@ -57,7 +57,7 @@ function Recover() {
     <Main height={'100vh'}>
 			<Column margin={'auto'}>
         <Container padding={'0 0 20px 0'}>
-					<Link to='/signin'><ButtonNmf /></Link>
+					<Link to='/signin'><Button /></Link>
 				</Container>
 				<Container width={'300px'}>
 					<Column as="form" onSubmit={handleRecover}>
