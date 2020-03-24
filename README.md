@@ -28,3 +28,5 @@ For install all dependencies, use this command:
 
     To set up subscriptions plans:
     https://stripe.com/docs/billing/subscriptions/set-up-subscription#without-code
+    
+#### !PAUSED FOR STUDIES
