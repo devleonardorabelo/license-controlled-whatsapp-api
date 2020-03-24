@@ -19,11 +19,14 @@ import {
     Button,
     H2,
     H5,
+    H6,
     P,
     Avatar,
     ButtonAction,
+    ButtonLink,
     Input,
-    Alert
+    Alert,
+    PB
   } from '../../components/StyledComponents'
 
 function Profile(){
@@ -120,44 +123,41 @@ function Profile(){
     }
 
     return (
-      <Row>
+      <Row background={'#f7faff'} minHeight={'100vh'}>
         <NavPanel />
         <Main>
-          <Column>
-            <Container padding={'0 10px'}>
-            <Link to='/panel'><Button /></Link>
+          <Column background={'transparent'}>
+            <Container padding={'0 10px 20px 0'}>
+              <Link to='/panel'><ButtonLink background={'url(/img/panel/arrow-left.svg)'}/></Link>
             </Container>
-            <Container padding={'40px 10px'}>
-              <Column>
-                <Avatar></Avatar>
-                <Column as='form' onSubmit={handleUpdateData} >   
-                  <H5>Meus dados</H5>
-                  <Row>
-                    <Input placeholder='Nome da Empresa' onChange={e => setCompany(e.target.value)} defaultValue={data.company}/>
-                  </Row>
-                  <Row>
-                    <Input placeholder='whatsapp' onChange={e => setWhatsapp(e.target.value)} defaultValue={data.whatsapp}/>
-                  </Row>
-                  <Row>
-                    <ButtonAction type='submit'>Atualizar dados</ButtonAction>
-                  </Row>
-                </Column>
-                <Column as='form' onSubmit={handleUpdatePassword}>
-                  <H5>Trocar senha</H5>
-                  <Row>
-                    <Input type='password' placeholder='senha atual' onChange={e => setCurrentPwd(e.target.value)}/>
-                  </Row>
-                  <Row>
-                    <Input type='password' placeholder='nova senha' onChange={e => setNewPwd(e.target.value)}/>
-                    <Input type='password' placeholder='confirmar senha' onChange={e => setconfirmPwd(e.target.value)}/>
-                  </Row>
-                  <Row>
-                    <ButtonAction type="submit">Trocar senha</ButtonAction>
-                  </Row>
-              
-                </Column>
-              </Column>
+            <Container padding={'10px 10px'}>
+              <H6>MEU PERFIL</H6>
             </Container>
+            <Row padding={'0 10px'}>
+              <Box as='form' width={'50%'} margin={'0 10px 0 0'} onSubmit={handleUpdateData} isResponsive>
+                <Avatar margin={'20px auto 40px auto'} />
+                <Column>
+                  <PB>Nome da empresa</PB>
+                  <Input width={'100%'} placeholder='Nome da Empresa' onChange={e => setCompany(e.target.value)} defaultValue={data.company}/>
+                  <PB>Whatsapp</PB>
+                  <Input width={'100%'} placeholder='whatsapp' onChange={e => setWhatsapp(e.target.value)} defaultValue={data.whatsapp}/>
+                  <Button type='submit'>Atualizar dados</Button>  
+                </Column>  
+              </Box>
+              <Box as='form' width={'50%'} margin={'0 0 0 10px'} onSubmit={handleUpdatePassword} isResponsive>
+                <Column>
+                  <H6 margin={'0 0 35px 0'}>Trocar senha</H6>
+                  <PB>Senha atual</PB>
+                  <Input type='password' placeholder='senha atual' onChange={e => setCurrentPwd(e.target.value)}/>
+                  <PB>Nova senha</PB>
+                  <Input type='password' placeholder='nova senha' onChange={e => setNewPwd(e.target.value)}/>
+                  <PB>Confirmar nova senha</PB>
+                  <Input type='password' placeholder='confirmar senha' onChange={e => setconfirmPwd(e.target.value)}/>
+                  <Button type="submit">Trocar senha</Button>  
+                </Column>
+                
+              </Box>
+            </Row>
             <Alert alert={alert} statusAlert={statusAlert}>
               {textAlert.map(eachAlert => (
                 <div key={Math.random()}>{eachAlert}</div>

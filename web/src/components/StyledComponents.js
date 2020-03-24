@@ -155,6 +155,7 @@ export const Column = styled.div`
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    flex-grow: ${props => props.flexGrow || '0'};
     padding: ${props => props.padding || '0'};
     margin: ${props => props.margin || '0'};
     background: ${props => props.background || 'transparent'};
@@ -168,7 +169,7 @@ export const Container = styled.div`
     display: block;
     width: ${props => props.width || '100%'};
     height: ${props => props.height || 'auto'};
-  
+    background: ${props => props.background || 'transparent'};
     padding: ${props => props.padding || '0'};
     margin: ${props => props.margin || '0'};
     @media (max-width: 860px){
@@ -190,6 +191,7 @@ export const Box = styled.div`
     
     @media (max-width: 860px){
         width: ${props => props.isResponsive ? 'auto' : `${props.width}`};
+        margin: ${props => props.isResponsive ? '10px' : `${props.margin}`};
     }
 `;
 
@@ -254,7 +256,6 @@ export const Burger = styled.button`
 export const Input = styled.input`
     margin-bottom: 20px;
     display: block;
-    width: 100%;
     padding: .8rem 1rem;
     font-size: 1.6rem;
     line-height: 3rem;
@@ -263,8 +264,9 @@ export const Input = styled.input`
     border: 2px solid #dfe5f2;
     border-radius: .5rem;
     transition: .5s;
-    font-family: ABeeZee;
+    font-family: Oxygen;
     font-weight: 700;
+    width: ${props => props.width || 'auto'};
     &::placeholder {
         color: #D2D6DE;
         opacity: 1;
@@ -377,6 +379,7 @@ export const Info = styled(P)`
 export const Avatar = styled.div`
     height: 105px;
     width: 105px;
+    margin: ${props => props.margin || '0'};
     background-color: #fff;
     border-radius: 100%;
     -webkit-box-shadow: 0 0 1px 0 rgba(59,89,178,.08),0 4px 14px rgba(59,89,178,.06);
@@ -404,4 +407,11 @@ export const Alert = styled.div`
         width: 100%;
         border-radius: 0;
     }
+`;
+export const IconLoading = styled.div`
+    width: 50px;
+    height: 50px;
+    background: url('/img/panel/loading.gif');
+    background-repeat: no-repeat;
+    background-size: 100%;
 `;

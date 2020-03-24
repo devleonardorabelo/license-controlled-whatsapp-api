@@ -57,11 +57,10 @@ function Panel() {
       <NavPanel />
       <Main>
         <Column>
-          <Container padding={'0 10px'}>
+          <Container padding={'0 10px 20px 0'}>
             <Link to='/panel'><ButtonLink background={'url(/img/panel/arrow-left.svg)'}/></Link>
           </Container>
-          <Container padding={'40px 10px'}>
-            
+          <Box padding={'40px 20px'}>
             <Row>
               <Avatar></Avatar>
               <Column padding={'10px 20px'}>
@@ -71,9 +70,8 @@ function Panel() {
                 </Row>
               </Column>
             </Row>  
-            
-          </Container>
-          <Container margin={'0 0 20px 0'}>
+          </Box>
+          <Container margin={'20px 0 20px 0'}>
             <H6 margin={'0 10px'}>MENSAGENS</H6>
             <Row wrap={'wrap'}>
             {messages.map(message => (

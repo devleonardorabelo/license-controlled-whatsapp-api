@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
+import Loading from './components/Loading.js'
 
 import { isAuthenticated } from './auth'
 
@@ -11,6 +12,7 @@ const UpdatePwd = lazy(() => import('./pages/Auth/Update/'));
 const Panel = lazy(() => import('./pages/Panel/'));
 const Contacts = lazy(() => import('./pages/Contacts/'));
 const Profile = lazy(() => import('./pages/Profile/'));
+const Docs = lazy(() => import('./pages/Docs/'));
 const Subscription = lazy(() => import('./pages/Subscription/'));
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -25,7 +27,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 const Routes = () => (
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/signin" component={Signin}/>
@@ -35,6 +37,7 @@ const Routes = () => (
           <PrivateRoute path="/panel" component={Panel}/>
           <PrivateRoute path="/contacts" component={Contacts}/>
           <PrivateRoute path="/profile" component={Profile}/>
+          <PrivateRoute path="/docs" component={Docs}/>
           <PrivateRoute path="/subscription" component={Subscription}/>
         </Switch>
       </Suspense>
