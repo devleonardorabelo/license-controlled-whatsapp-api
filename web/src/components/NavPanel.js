@@ -26,7 +26,7 @@ function NavPanel() {
             <Link to='/profile'><NavLink background={'url(/img/panel/user.svg)'}><span>Perfil</span></NavLink></Link>
             <Link to='/contacts'><NavLink background={'url(/img/panel/brackets.svg)'}><span>Contatos</span></NavLink></Link>
             <Link to='/docs'><NavLink background={'url(/img/panel/brackets.svg)'}><span>Documentação</span></NavLink></Link>
-            <Logout isResponsive><span>sair</span></Logout>
+            <Logout isResponsive><span>Sair</span></Logout>
         </NavItem>
         <Logout noResponsive><span>sair</span></Logout>
     </Nav>

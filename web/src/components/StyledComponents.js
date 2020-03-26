@@ -213,7 +213,7 @@ export const Button = styled.button`
 	border: 2px solid transparent;
 	padding: .5rem 3rem;
 	font-size: 1.6rem;
-	border-radius: 2rem;
+	border-radius: .5rem;
 	-webkit-transition: all .2s ease-in-out;
 	-o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -223,7 +223,7 @@ export const Button = styled.button`
     margin: ${props => props.margin || '0'};
     background-color: ${props => props.inverted ? '#f7faff' : '#44bba4'};    
     &:hover {
-        background: #44bba4;
+        background: #3AA18C;
     }
 `;
 export const ButtonAction = styled.button`
@@ -415,3 +415,16 @@ export const IconLoading = styled.div`
     background-repeat: no-repeat;
     background-size: 100%;
 `;
+export const Pre = styled.pre`
+    flex-grow: 1;
+    font-size: 1.6em;
+    overflow-x: auto;
+    @media  (max-width: 860px) {
+        margin: 0 0 20px 0;
+        padding: 0 0 10px 0;
+    }
+`;
+export const CenterY = styled(Button)`
+    align-self: center;
+`;
+

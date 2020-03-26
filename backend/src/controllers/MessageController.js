@@ -8,7 +8,7 @@ module.exports = {
         if(!req.query.key) return res.status(400).json({message: 'requisição invalida'})
 
         let key = req.query.key
-  
+          
         let user = await User.findOne({whatsappKey: key})
         
         if(!user) return res.status(400).json({message: 'usuario não registrado ou não ativo'})

@@ -4,6 +4,7 @@ const authMiddleware    = require('../middlewares/auth')
 const ContactController = require('../controllers/ContactController')
 const PanelController   = require('../controllers/PanelController')
 const ProfileController = require('../controllers/ProfileController')
+const DocsController    = require('../controllers/DocsController')
 
 routes.use(authMiddleware)
 
@@ -16,6 +17,8 @@ routes.get('/profile', ProfileController.show)
 routes.post('/update/data', ProfileController.update)
 
 routes.post('/update/password', ProfileController.updatePwd)
+
+routes.get('/docs', DocsController.show)
 
 routes.delete('/delete', PanelController.destroy)
 
