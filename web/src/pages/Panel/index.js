@@ -66,7 +66,7 @@ function Panel() {
               <Column padding={'10px 20px'}>
                 <H5 margin={'0 0 8px 0'}>{user.company}</H5>
                 <Row>
-                  <Button background={'url(/img/panel/user.svg)'}>Meu perfil</Button>
+                  <Link to="/profile"><Button background={'url(/img/panel/user.svg)'}>Meu perfil</Button></Link>
                 </Row>
               </Column>
             </Row>  

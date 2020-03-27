@@ -9,9 +9,11 @@ import {
     Main,
     Box,
     Button,
-    H2,
-    H5,
-    P
+    P,
+    PB,
+    Column,
+    ButtonLink,
+    H6
   } from '../../components/StyledComponents'
 
 function Contacts(){
@@ -35,31 +37,29 @@ function Contacts(){
             
     }, [])
 
-    return (
-        <Row padding={'0px'}>
-            <NavPanel />
-            <Main>
-                <Container padding={'0 0 40px 10px'}>
-                    <Link to='/panel'><Button /></Link>
-                </Container>
-                <Container padding={'0 10px'}>
-                    <H2>Mensagens</H2>
-                </Container>
-                <Row>
-                    {customers.map(customer => (
-                        <Box key={customer._id}>
-                            <H5>{customer.name}</H5>
-                            <P>{customer.whatsapp}</P>
-                        </Box>
-                    ))}
-                </Row>
-                <Row padding={'10px'} content={'flex-end'}>
-                    <Button as="a" href={contacts} download={filename} onClick={() => {window.open('https://contacts.google.com/')}}>^</Button>
-                </Row>
-            </Main>
+    return (    
+        <Row background={'#f7faff'} minHeight={'100vh'}>
+          <NavPanel />
+          <Main>
+            <Column background={'transparent'}>
+              <Container padding={'0 10px 20px 0'}>
+                <Link to='/panel'><ButtonLink background={'url(/img/panel/arrow-left.svg)'}/></Link>
+              </Container>
+              <Container padding={'10px 10px'}>
+                <H6 margin={'0 0 10px 0'}>CONTATOS</H6>
+                {customers.map(customer => (
+                    <Box key={customer._id} padding={'10px 20px'} margin={'0 0 1rem 0'}>
+                        <PB margin={'0 0 -10px 0'}>{customer.name}</PB>
+                        <P>{customer.whatsapp}</P>
+                    </Box>
+                ))}
+              </Container>
+              <Container padding={'0 10px'}>
+                  <Button as="a" href={contacts} download={filename} onClick={() => {window.open('https://contacts.google.com/')}}>Importar</Button>
+              </Container>
+            </Column>
+          </Main>
         </Row>
-    
-    
     )
 }
 

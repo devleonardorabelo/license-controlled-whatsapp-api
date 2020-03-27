@@ -187,7 +187,6 @@ export const Box = styled.div`
     border-radius: 10px;
     -webkit-box-shadow: 0 0 1px 0 rgba(59,89,178,.08),0 4px 14px rgba(59,89,178,.06);
     box-shadow: 0 0 1px 0 rgba(59,89,178,.08),0 4px 14px rgba(59,89,178,.06);
-    margin-bottom: 2rem;
     
     @media (max-width: 860px){
         width: ${props => props.isResponsive ? 'auto' : `${props.width}`};
@@ -417,8 +416,12 @@ export const IconLoading = styled.div`
 `;
 export const Pre = styled.pre`
     flex-grow: 1;
-    font-size: 1.6em;
     overflow-x: auto;
+    font-family: ABeeZee;
+    font-size: 1.6em;
+    line-height: 2rem;
+    color: #333;
+    font-weight: 400;
     @media  (max-width: 860px) {
         margin: 0 0 20px 0;
         padding: 0 0 10px 0;

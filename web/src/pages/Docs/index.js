@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import useClipboard from "react-use-clipboard"
 import axios from 'axios'
 
-
+import Loading from '../../components/Loading'
 import NavPanel from '../../components/NavPanel'
+
 import { Row, Main, Column, Container, H6, ButtonLink, Box, Pre, CenterY, P } from '../../components/StyledComponents'
 
 function Docs() {
@@ -13,7 +14,7 @@ function Docs() {
   const [ company, setCompany ] = useState()
   let code = `
     <div id="gerenciazap" license-key="${licenseKey}" company="${company}">
-      <script src="${process.env.REACT_APP_CLIENT_DOMAIN}/scripts/theme1.js"></script>
+        <script src="${process.env.REACT_APP_CLIENT_DOMAIN}/scripts/theme1.js"></script>
     </div>
   `;
   const [ isCopied, setIsCopied ] = useClipboard(code)
@@ -51,7 +52,7 @@ function Docs() {
               <Row>
                 <Pre onClick={setIsCopied}>
                   &lt;div id="gerenciazap" license-key="{licenseKey}" company="{company}"&gt;{'\n'}
-                    &nbsp;&lt;script src="{process.env.REACT_APP_CLIENT_DOMAIN}/scripts/theme1.js">&lt;/script&gt;{'\n'}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="{process.env.REACT_APP_CLIENT_DOMAIN}/scripts/theme1.js"&gt;&lt;/script&gt;{'\n'}
                   &lt;/div&gt;
                 </Pre>
                 <CenterY onClick={setIsCopied} inverted={isCopied}>
