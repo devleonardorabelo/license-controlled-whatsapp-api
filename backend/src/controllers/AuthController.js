@@ -38,6 +38,7 @@ module.exports = {
         
     },
     async signup(req, res) {
+        
         let { username, email, whatsapp, password, company } = req.body
         
         let user = await User.findOne({

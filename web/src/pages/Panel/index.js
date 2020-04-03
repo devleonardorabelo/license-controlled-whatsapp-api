@@ -18,7 +18,7 @@ import {
   H6,
   H7,
   P,
-  PB,
+  Ocult,
   Column,
   Avatar,
   ButtonAction,
@@ -53,7 +53,7 @@ function Panel() {
   }
   console.log(messages)
 	return (
-    <Row background={'#f7faff'} minHeight={'100vh'}>
+    <Row background={'#f7faff'} minHeight={'100vh'}>  
       <NavPanel />
       <Main>
         <Column>
@@ -66,7 +66,10 @@ function Panel() {
               <Column padding={'10px 20px'}>
                 <H5 margin={'0 0 8px 0'}>{user.company}</H5>
                 <Row>
-                  <Link to="/profile"><Button background={'url(/img/panel/user.svg)'}>Meu perfil</Button></Link>
+                  <Link to="/profile"><Button margin={'0 10px 0 0'}>Meu perfil</Button></Link>
+                  {user.active ? ''
+                  : <Link to="/subscription"><Button>Ativar minha conta</Button></Link>}
+                  
                 </Row>
               </Column>
             </Row>  
@@ -79,14 +82,14 @@ function Panel() {
                 <Row content={'space-between'}>
                   <div>
                     <H7 margin={'0 0 -10px'}>{message.customer.name}</H7>
-                    <Info>{message.customer.whatsapp}</Info>
-                    {user.active ? <P fontStyle={'italic'}>"{message.message}"</P> : <P>Comprar licença</P>}  
+                    {user.active ? <Info>{message.customer.whatsapp}</Info> : <Ocult background={'#ededed'} margin={'10px 0'} height={'16px'}/>}  
+                    {user.active ? <P fontStyle={'italic'}>"{message.message}"</P> : <Ocult background={'#ededed'}/>}  
                   </div>
                   <div>
                     {user.active ? 
                       <ButtonAction as="a" margin={'8px 0 0 0'} target="_blank" background={'#4eb792 url(/img/panel/send.svg)'} href={`https://api.whatsapp.com/send?phone=${message.customer.whatsapp}`} />
                       :
-                      <Link to="/subcription"><Button target="_blank">></Button></Link>
+                      <Link to="/subscription"><Button target="_blank">></Button></Link>
                     }    
                   </div>
                 </Row> 

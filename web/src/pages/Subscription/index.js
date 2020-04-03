@@ -1,78 +1,77 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom'
-import { loadStripe } from "@stripe/stripe-js";
-import axios from 'axios'
-import { BodyRow, Main, Container1, Container2, Grow1, Box, InputTextNmf, Column, RowEnd, ButtonAction, Button, Row } from '../../components/StyledComponents'
-
-import {
-  Elements,
-  CardElement,
-  useStripe,
-  useElements
-} from "@stripe/react-stripe-js";
-
-const CheckoutForm = () => {
-
-  const [sent, setSent] = useState(false)
-
-  const stripe = useStripe();
-  const elements = useElements();
-  let history = useHistory()
-
-  const handleSubmit = async event => {
-    event.preventDefault();
-
-    const result = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement)
-    });
-
-    console.log(result)
-
-    try {
-
-      const response = await axios.post(`${process.env.REACT_APP_BACK_DOMAIN}/payment`,{
-        email: 'leonardomrabelo@live.com',
-        payment_method: result.paymentMethod.id
-      },{
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('usertoken')}`
-        }
-      })
-
-      console.log(response.data)
-
-      if(response.data.paid == true){
-        return history.push('/panel')
-      }
-
-    } catch (error) {
-        console.log(error);
-    }
-    
-  };
-
-  return (<>
-    
-    <form onSubmit={handleSubmit}>
-      <CardElement/>
-      <button type="submit" disabled={!stripe || sent} onClick={setSent}>Pay</button>   
-    </form>
-
-     
-
-  </>);
-};
-
-const stripePromise = loadStripe('pk_test_pPOC14ljvMHYJOODJ7mOXtJe00Pter1jsE');
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { Main, Container } from '../../components/StyledComponents';
 
 const Subscription = () => {
 
+  const history = useHistory()
+
+  useEffect(() => {
+    async function loadSubscription() {
+      const response = await axios.get(`${process.env.REACT_APP_BACK_DOMAIN}/payment`, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+      if(response.data.active === true) history.push('/panel')
+    }
+    loadSubscription()
+  },[])
+
+  async function handleSubscribe(e) {
+    e.preventDefault()
+    const response = await axios.post('https://sandbox.moip.com.br/assinaturas/v1/subscriptions?new_customer=true',{
+      code: "32ad24",
+      payment_method: "CREDIT_CARD",
+      plan: {
+        name: "Plano Especial",
+        code: "plan101"
+      },
+      customer: {
+        code: "321321",
+        fullname: "Nome Sobrenome",
+        email: "nome@exemplo.com.br",
+        cpf: "22222222222",
+        phone_number: "934343434",
+        phone_area_code: "11",
+        birthdate_day: "26",
+        birthdate_month: "04",
+        birthdate_year: "1986",
+        address: {
+          street: "Rua nome da Rua",
+          number: "170",
+          complement: "Casa",
+          district: "Bairro",
+          city: "São Paulo",
+          state: "SP",
+          country: "BRA",
+          zipcode: "00000000"
+        },
+        billing_info: {
+          credit_card: {
+            holder_name: "Nome Completo",
+            number: "4111111111111111",
+            expiration_month: "04",
+            expiration_year: "25"
+          }
+        }
+      }
+    },{
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Basic OVlTWUg5SUFQUE5DQjJRTlhWOUUzUE1ERzROVDdUT1M6WkpGTVBaTk5RSkM4TUZURlE5WFRKQkwwMkIyWUhRWFc3VFNJV0g3Qg==', 
+      }
+    })
+
+    await axios.post(`${process.env.REACT_APP_BACK_DOMAIN}/payment`,{}, { headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` } })
+    history.push('/panel')
+  }
+
   return (
-    <Elements stripe={stripePromise} >
-      <CheckoutForm />
-    </Elements>
+    <Main>
+      <Container>
+        <form onSubmit={handleSubscribe}>
+          <button type='submit'>Enviar</button>
+        </form>
+      </Container>
+    </Main>
   );
 };
 

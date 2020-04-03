@@ -430,4 +430,9 @@ export const Pre = styled.pre`
 export const CenterY = styled(Button)`
     align-self: center;
 `;
-
+export const Ocult = styled.div`
+    height: ${props => props.height || '32px'};
+    width: ${props => props.width || 'auto'};
+    margin: ${props => props.margin || '0'};
+    background: ${props => props.background || 'transparent'};
+`;
