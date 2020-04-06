@@ -24,9 +24,6 @@ For install all dependencies, use this command:
 
     cd backend -> yarn install -> (nodemon**) 
     
-#### STRIPE
-
-    To set up subscriptions plans:
-    https://stripe.com/docs/billing/subscriptions/set-up-subscription#without-code
-    
 #### !PAUSED FOR STUDIES
+
+### NEW INTERFACE -> https://www.figma.com/file/rQab2cY8CnoxlKNNyoamgC/Untitled?node-id=0%3A1
